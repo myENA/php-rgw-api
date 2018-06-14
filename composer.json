@@ -1,0 +1,30 @@
+{
+  "name": "myena/php-rgw-api",
+  "description": "PHP Client for the Rados Gateway API that doesn't suck",
+  "type": "library",
+  "license": "MPL-2.0",
+  "authors": [
+    {
+      "name": "Daniel Carbone",
+      "email": "dcarbone@ena.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "guzzlehttp/guzzle": "@stable",
+    "psr/log": "@stable",
+    "dcarbone/gohttp": "@stable"
+  },
+  "require-dev": {
+    "myena/default-logger": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "MyENA\\RGW\\": "src/"
+    },
+    "files": [
+      "files/constants.php",
+      "files/funcs.php"
+    ]
+  }
+}

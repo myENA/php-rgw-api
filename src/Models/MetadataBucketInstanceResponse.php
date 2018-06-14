@@ -1,0 +1,28 @@
+<?php namespace MyENA\RGW\Models;
+
+/**
+ * Class MetadataBucketInstanceResponse
+ * @package MyENA\RGW\Models
+ */
+class MetadataBucketInstanceResponse extends AbstractMetadataResponse {
+    /** @var \MyENA\RGW\Models\MetadataBucketInstanceResponseData */
+    protected $data = null;
+
+    /**
+     * MetadataBucketInstance constructor.
+     * @param array $data
+     */
+    public function __construct(array $data = []) {
+        parent::__construct($data);
+        if (is_array($this->data)) {
+            $this->data = new MetadataBucketInstanceResponseData($this->data);
+        }
+    }
+
+    /**
+     * @return \MyENA\RGW\Models\MetadataBucketInstanceResponseData
+     */
+    public function getData(): ?MetadataBucketInstanceResponseData {
+        return $this->data;
+    }
+}
