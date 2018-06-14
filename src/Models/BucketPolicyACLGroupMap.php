@@ -4,7 +4,7 @@ use MyENA\RGW\AbstractModel;
 
 /**
  * @SWG\Definition(
- *     definition="RGWBucketPolicyACLMap",
+ *     definition="RGWBucketPolicyACLGroupMap",
  *     type="object",
  *     @SWG\Property(
  *          property="acl",
