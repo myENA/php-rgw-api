@@ -3,6 +3,28 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketPolicyACL",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="acl_group_map",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLGroupMap")
+ *     ),
+ *     @SWG\Property(
+ *          property="acl_user_map",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLUserMap")
+ *     ),
+ *     @SWG\Property(
+ *          property="grant_map",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLGrantMap")
+ *     )
+ * )
+ */
+
+/**
  * Class BucketPolicyACL
  * @package MyENA\RGW\Models
  */

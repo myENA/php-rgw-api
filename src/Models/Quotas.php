@@ -3,6 +3,23 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWQuotas",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="bucket_quota",
+ *          type="object",
+ *          ref="#/definitions/RGWQuotaMeta"
+ *     ),
+ *     @SWG\Property(
+ *          property="user_quota",
+ *          type="object",
+ *          ref="#/definitions/RGWQuotaMeta"
+ *     )
+ * )
+ */
+
+/**
  * Class Quotas
  * @package MyENA\RGW\Models
  */

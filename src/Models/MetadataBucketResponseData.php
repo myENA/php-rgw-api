@@ -3,6 +3,34 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataBucketResponseData",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="bucket",
+ *          type="object",
+ *          ref="#/definitions/RGWMetadataBucketInfo"
+ *     ),
+ *     @SWG\Property(
+ *          property="has_bucket_info",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="linked",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="creation_time",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="owner",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataBucketResponseData
  * @package MyENA\RGW\Models
  */

@@ -3,6 +3,14 @@
 use MyENA\RGW\AbstractModelCollection;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWUserCapabilityCollection",
+ *     type="array",
+ *     @SWG\Items(ref="#/definitions/RGWUserCapability")
+ * )
+ */
+
+/**
  * Class UserCapabilityCollection
  * @package MyENA\RGW\Models
  */

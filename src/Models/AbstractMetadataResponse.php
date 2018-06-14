@@ -3,6 +3,26 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataResponse",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="key",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="mtime",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="ver",
+ *          type="object",
+ *          ref="#/definitions/RGWMetadataVersion"
+ *     )
+ * )
+ */
+
+/**
  * Class AbstractMetadataResponse
  * @package MyENA\RGW\Models
  */

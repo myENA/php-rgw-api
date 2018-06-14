@@ -3,6 +3,14 @@
 use MyENA\RGW\AbstractModelCollection;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketInfoCollection",
+ *     type="array",
+ *     @SWG\Items(ref="#/definitions/RGWBucketInfo")
+ * )
+ */
+
+/**
  * Class BucketInfoCollection
  * @package MyENA\RGW\Models
  */

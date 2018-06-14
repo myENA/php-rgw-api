@@ -3,6 +3,33 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWQuotaMeta",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="enabled",
+ *          type="boolean"
+ *     ),
+ *     @SWG\Property(
+ *          property="max_size_kb",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="max_objects",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="check_on_raw",
+ *          type="boolean"
+ *     ),
+ *     @SWG\Property(
+ *          property="max_size",
+ *          type="integer"
+ *     )
+ * )
+ */
+
+/**
  * Class QuotaMeta
  * @package MyENA\RGW\Models
  */

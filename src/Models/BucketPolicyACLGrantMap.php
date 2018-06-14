@@ -3,6 +3,21 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketPolicyACLGrantMap",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="id",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="grant",
+ *          type="RGWBucketPolicyACLGrantMapGrant"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketPolicyACLGrantMap
  * @package MyENA\RGW\Models
  */

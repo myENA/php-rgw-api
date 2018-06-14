@@ -3,6 +3,21 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWUserCapability",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="type",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="perm",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class UserCapability
  * @package MyENA\RGW\Models
  */

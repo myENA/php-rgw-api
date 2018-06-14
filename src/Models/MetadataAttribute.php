@@ -3,6 +3,21 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataAttribute",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="key",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="val",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataAttribute
  * @package MyENA\RGW\Models
  */

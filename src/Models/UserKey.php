@@ -3,6 +3,25 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWUserKey",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="user",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="access_key",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="secret_key",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class UserKey
  * @package MyENA\RGW\Models
  */

@@ -3,6 +3,41 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWStatisticsEntry",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="size_kb",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="size_kb_actual",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="num_objects",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="size",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="size_actual",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="size_utilized",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="size_kb_utilized",
+ *          type="integer"
+ *     )
+ * )
+ */
+
+/**
  * Class StatisticsEntry
  * @package MyENA\RGW\Models
  */

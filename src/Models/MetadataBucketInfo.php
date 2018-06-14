@@ -3,6 +3,46 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataBucketInfo",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="marker",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="name",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="data_extra_pool",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="pool",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="index_pool",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="tenant",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="bucket_id",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="explicit_placement",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketPlacement"
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataBucketInfo
  * @package MyENA\RGW\Models
  */

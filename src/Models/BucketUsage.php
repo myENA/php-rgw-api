@@ -3,6 +3,33 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketUsage",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="rgw_none",
+ *          type="object",
+ *          ref="#/definitions/RGWStatisticsEntry"
+ *     ),
+ *     @SWG\Property(
+ *          property="rgw_main",
+ *          type="object",
+ *          ref="#/definitions/RGWStatisticsEntry"
+ *     ),
+ *     @SWG\Property(
+ *          property="rgw_shadow",
+ *          type="object",
+ *          ref="#/definitions/RGWStatisticsEntry"
+ *     ),
+ *     @SWG\Property(
+ *          property="rgw_multimedia",
+ *          type="object",
+ *          ref="#/definitions/RGWStatisticsEntry"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketUsage
  * @package MyENA\RGW\Models
  */

@@ -3,6 +3,25 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketPlacement",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="data_pool",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="data_extra_pool",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="index_pool",
+ *          type="integer"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketPlacement
  * @package MyENA\RGW\Models
  */

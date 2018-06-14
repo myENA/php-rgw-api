@@ -1,6 +1,19 @@
 <?php namespace MyENA\RGW\Models;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataBucketResponse",
+ *     type="object",
+ *     ref="$/definitions/RGWMetadataResponse",
+ *     @SWG\Property(
+ *          property="data",
+ *          type="object",
+ *          ref="#/definitions/RGWMetadataBucketResponseData"
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataBucketResponse
  * @package MyENA\RGW\Models
  */

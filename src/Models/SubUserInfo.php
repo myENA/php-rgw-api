@@ -3,6 +3,21 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWSubUserInfo",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="id",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="permissions",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class SubUserInfo
  * @package MyENA\RGW\Models
  */

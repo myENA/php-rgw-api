@@ -3,6 +3,14 @@
 use MyENA\RGW\AbstractModelCollection;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWUserKeyCollection",
+ *     type="array",
+ *     @SWG\Items(ref="#/definitions/RGWUserKey")
+ * )
+ */
+
+/**
  * Class UserKeyCollection
  * @package MyENA\RGW\Models
  */

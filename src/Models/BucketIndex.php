@@ -6,6 +6,23 @@ use Psr\Http\Message\ResponseInterface;
 use function MyENA\RGW\decodeMultiBody;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketIndex",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="new_objects",
+ *          type="array",
+ *          @SWG\Items(type="string")
+ *     ),
+ *     @SWG\Property(
+ *          property="headers",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketIndexHeaders"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketIndex
  * @package MyENA\RGW\Models
  */

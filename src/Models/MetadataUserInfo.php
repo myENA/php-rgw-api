@@ -1,6 +1,55 @@
 <?php namespace MyENA\RGW\Models;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataUserInfo",
+ *     type="object",
+ *     ref="$/definitions/RGWUserInfo",
+ *     @SWG\Property(
+ *          property="auid",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="op_mask",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="default_placement",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="placement_tags",
+ *          type="array",
+ *          @SWG\Items(type="string")
+ *     ),
+ *     @SWG\Property(
+ *          property="bucket_quota",
+ *          type="object",
+ *          ref="#/definitions/RGWQuotaMeta"
+ *     ),
+ *     @SWG\Property(
+ *          property="user_quota",
+ *          type="object",
+ *          ref="#/definitions/RGWQuotaMeta"
+ *     ),
+ *     @SWG\Property(
+ *          property="temp_url_keys",
+ *          type="array",
+ *          @SWG\Items(type="string")
+ *     ),
+ *     @SWG\Property(
+ *          property="type",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="attrs",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWMetadataAttribute")
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataUserInfo
  * @package MyENA\RGW\Models
  */

@@ -3,6 +3,23 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketPolicy",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="owner",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketPolicyOwner"
+ *     ),
+ *     @SWG\Property(
+ *          property="acl",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketPolicyACL"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketPolicy
  * @package MyENA\RGW\Models
  */

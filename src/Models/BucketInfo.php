@@ -3,6 +3,80 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketInfo",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="bucket",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="pool",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="index_pool",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="id",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="marker",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="owner",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="ver",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="master_ver",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="mtime",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="max_marker",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="usage",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketUsage"
+ *     ),
+ *     @SWG\Property(
+ *          property="bucket_quota",
+ *          type="object",
+ *          ref="#/definitions/RGWQuotaMeta"
+ *     ),
+ *     @SWG\Property(
+ *          property="zonegroup",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="placement_rule",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="explicit_placement",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketPlacement"
+ *     ),
+ *     @SWG\Property(
+ *          property="index_type",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketInfo
  * @package MyENA\RGW\Models
  */

@@ -3,6 +3,18 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketIndexUsage",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="usage",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketUsage"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketIndexUsage
  * @package MyENA\RGW\Models
  */

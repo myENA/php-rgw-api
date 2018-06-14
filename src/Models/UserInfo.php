@@ -3,6 +3,62 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWUserInfo",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="tenant",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="user_id",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="display_name",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="email",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="suspended",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="max_buckets",
+ *          type="integer"
+ *     ),
+ *     @SWG\Property(
+ *          property="subusers",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWSubUserInfo")
+ *     ),
+ *     @SWG\Property(
+ *          property="keys",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWUserKey")
+ *     ),
+ *     @SWG\Property(
+ *          property="swift_keys",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWSwiftKey")
+ *     ),
+ *     @SWG\Property(
+ *          property="caps",
+ *          type="array",
+ *          @SWG\Items(ref="#/definitions/RGWUserCapability")
+ *     ),
+ *     @SWG\Property(
+ *          property="stats",
+ *          type="object",
+ *          ref="#/definitions/RGWStatisticsEntry"
+ *     )
+ * )
+ */
+
+/**
  * Class UserInfo
  * @package MyENA\RGW\Models
  */

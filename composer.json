@@ -11,12 +11,13 @@
   ],
   "require": {
     "php": ">=7.1",
-    "guzzlehttp/guzzle": "@stable",
-    "psr/log": "@stable",
-    "dcarbone/gohttp": "@stable"
+    "guzzlehttp/guzzle": "6.3.*",
+    "psr/log": "1.*",
+    "dcarbone/gohttp": "0.1.*"
   },
   "require-dev": {
-    "myena/default-logger": "@stable"
+    "myena/default-logger": "@stable",
+    "zircote/swagger-php": "@stable"
   },
   "autoload": {
     "psr-4": {
@@ -26,5 +27,9 @@
       "files/constants.php",
       "files/funcs.php"
     ]
+  },
+  "suggest": {
+    "zircote/swagger-php": "Swagger docs!",
+    "myena/default-logger": "Simple PSR-compliant logger with ANSI color support"
   }
 }

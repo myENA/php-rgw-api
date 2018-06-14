@@ -3,6 +3,23 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWBucketIndexHeaders",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="existing_header",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketIndexUsage"
+ *     ),
+ *     @SWG\Property(
+ *          property="calculated_header",
+ *          type="object",
+ *          ref="#/definitions/RGWBucketIndexUsage"
+ *     )
+ * )
+ */
+
+/**
  * Class BucketIndexHeaders
  * @package MyENA\RGW\Models
  */

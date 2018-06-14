@@ -1,6 +1,19 @@
 <?php namespace MyENA\RGW\Models;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWMetadataUserResponse",
+ *     type="object",
+ *     ref="$/definitions/RGWMetadataResponse",
+ *     @SWG\Property(
+ *          property="data",
+ *          type="object",
+ *          ref="#/definitions/RGWMetadataUserInfo"
+ *     )
+ * )
+ */
+
+/**
  * Class MetadataUserResponse
  * @package MyENA\RGW\Models
  */

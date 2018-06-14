@@ -3,6 +3,21 @@
 use MyENA\RGW\AbstractModel;
 
 /**
+ * @SWG\Definition(
+ *     definition="RGWSwiftKey",
+ *     type="object",
+ *     @SWG\Property(
+ *          property="user",
+ *          type="string"
+ *     ),
+ *     @SWG\Property(
+ *          property="secret_key",
+ *          type="string"
+ *     )
+ * )
+ */
+
+/**
  * Class SwiftKey
  * @package MyENA\RGW\Models
  */
