@@ -47,6 +47,9 @@ class Create extends AbstractLink implements MethodLink, ParameterLink, Executab
                     ->addValidator(Validators::OneOf('s3', 'swift')),
                 (new SingleParameter(self::PARAM_ACCESS, Parameter::IN_QUERY))
                     ->addValidator(Validators::OneOf('read', 'write', 'readwrite', 'full')),
+                (new SingleParameter(self::PARAM_GENERATE_SECRET, Parameter::IN_QUERY))
+                    ->addValidator(Validators::Boolean())
+                    ->setDefaultValue(true),
             ];
         }
         return $this->parameters;
