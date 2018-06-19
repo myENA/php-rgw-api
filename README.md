@@ -1,7 +1,6 @@
 # php-rgw-api
 
 This lib aims to be a comprehensive PHP SDK for the [Rados Gateway Admin API](http://docs.ceph.com/docs/jewel/radosgw/adminops/).
-Every response object is fully modeled and all request parameters have validation on them.
 
 ## Installation
  
@@ -10,10 +9,19 @@ This lib is designed to be installed using [Composer](https://getcomposer.org)
 ```json
 {
   "require": {
-    "myena/php-rgw-api": "@stable"
+    "myena/php-rgw-api": "2.*"
   }
 }
 ```
+
+## Features
+
+1. All object-containing responses are modeled ([list](./src/Models))
+1. Entire request chain is fully modeled, with required parameters being type-hinted 
+(e.g. [UserRootLink::Info](./src/Chain/UserRootLink.php))
+1. All models have full [swagger-php](https://github.com/zircote/swagger-php) markup
+1. Includes undocumented `/metadata` endpoints
+1. Parameter validation ([link](./src/Validator)) with hopefully useful error messages
 
 ## Usage Basics
 
@@ -46,12 +54,9 @@ $config = new \MyENA\RGW\Config([
     'address'   => '',  // REQUIRED
     'apiKey'    => '',  // REQUIRED
     'apiSecret' => '',  // REQUIRED
-    
+
     'adminPath'     => '',  // optional, whatever your admin ops path is
-    'securityToken' => '',  // optional
-    'zoneName'      => '',  // optional
-    'expiration'    => 0,   // optional
-    
+
     'silent' => false // optional, silences all logging
 ]);
 ```
