@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 use MyENA\RGW\Error\ResponseError;
 use Psr\Http\Message\RequestInterface;
@@ -7,10 +9,11 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @param string $name
  * @param string $delimiter
- * @param bool   $lcfirst
+ * @param bool $lcfirst
  * @return string
  */
-function sanitizeName(string $name, string $delimiter, bool $lcfirst = false): string {
+function sanitizeName(string $name, string $delimiter, bool $lcfirst = false): string
+{
     if (false !== strpos($name, $delimiter)) {
         $name = implode('', array_map('ucfirst', explode($delimiter, $name)));
     }
@@ -22,7 +25,8 @@ function sanitizeName(string $name, string $delimiter, bool $lcfirst = false): s
  * @param string $delimiter
  * @return string
  */
-function desanitizeName(string $name, string $delimiter): string {
+function desanitizeName(string $name, string $delimiter): string
+{
     $len = strlen($name);
     $ds = '';
     for ($i = 0; $i < $len; $i++) {
@@ -30,7 +34,7 @@ function desanitizeName(string $name, string $delimiter): string {
         $ord = ord($chr);
         // TODO: maybe be less lazy?
         if (65 <= $ord && $ord <= 90) {
-            $ds .= $delimiter.strtolower($chr);
+            $ds .= $delimiter . strtolower($chr);
         } else {
             $ds .= $chr;
         }
@@ -42,7 +46,8 @@ function desanitizeName(string $name, string $delimiter): string {
  * @param mixed $value
  * @return string
  */
-function encodeValue($value): string {
+function encodeValue($value): string
+{
     switch (gettype($value)) {
         case 'boolean':
             return $value ? 'true' : 'false';
@@ -56,7 +61,8 @@ function encodeValue($value): string {
  * @param mixed $value
  * @return string
  */
-function stringifyValue($value): string {
+function stringifyValue($value): string
+{
     switch ($type = gettype($value)) {
         case 'string':
         case 'integer':
@@ -70,7 +76,7 @@ function stringifyValue($value): string {
             return $value ? 'true' : 'false';
 
         case 'array':
-            return 'Array('.count($value).')';
+            return 'Array(' . count($value) . ')';
 
         case 'object':
             return get_class($value);
@@ -81,12 +87,32 @@ function stringifyValue($value): string {
 }
 
 /**
+ * @param mixed $value
+ * @return string
+ */
+function stringifyValueTyped($value): string
+{
+    switch ($type = gettype($value)) {
+        case 'string':
+        case 'integer':
+        case 'double':
+        case 'boolean':
+        case 'NULL':
+            return var_export($value, true);
+
+        default:
+            return stringifyValue($value);
+    }
+}
+
+/**
  * TODO: slightly redundant.
  *
  * @param \Psr\Http\Message\RequestInterface $request
  * @return array
  */
-function serviceAndRegion(RequestInterface $request): array {
+function serviceAndRegion(RequestInterface $request): array
+{
     $region = 'us-east-1';
     $service = 's3';
 
@@ -95,14 +121,14 @@ function serviceAndRegion(RequestInterface $request): array {
     if (4 === $cnt) {
         if ('s3' === $parts[1]) {
             $service = 's3';
-        } else if (0 === strpos($parts[1], 's3-')) {
+        } elseif (0 === strpos($parts[1], 's3-')) {
             $region = substr($parts[1], 3);
             $service = 's3';
         } else {
             $service = $parts[0];
             $region = $parts[1];
         }
-    } else if (5 === $cnt) {
+    } elseif (5 === $cnt) {
         $service = $parts[2];
         $region = $parts[1];
     } else {
@@ -124,7 +150,8 @@ function serviceAndRegion(RequestInterface $request): array {
  * @param \Psr\Http\Message\RequestInterface $request
  * @return bool
  */
-function isS3VirtualHostedStyle(RequestInterface $request): bool {
+function isS3VirtualHostedStyle(RequestInterface $request): bool
+{
     [$service, $_] = serviceAndRegion($request);
     return 's3' === $service && 3 === substr_count($service, '.');
 }
@@ -136,7 +163,8 @@ function isS3VirtualHostedStyle(RequestInterface $request): bool {
  * @type \MyENA\RGW\Error|null Decoding error, if seen.
  * )
  */
-function decodeBody(ResponseInterface $response, bool $asArray = false): array {
+function decodeBody(ResponseInterface $response, bool $asArray = false): array
+{
     $body = $response->getBody();
     if (0 === $body->getSize()) {
         $body->close();
@@ -159,10 +187,11 @@ function decodeBody(ResponseInterface $response, bool $asArray = false): array {
  * entry in the array
  *
  * @param \Psr\Http\Message\ResponseInterface $response
- * @param bool                                $asArray
+ * @param bool $asArray
  * @return array
  */
-function decodeMultiBody(ResponseInterface $response, bool $asArray = false): array {
+function decodeMultiBody(ResponseInterface $response, bool $asArray = false): array
+{
     static $startTokens = ['"', '[', '{'];
     $body = $response->getBody();
     if (0 === $body->getSize()) {
@@ -202,8 +231,10 @@ function decodeMultiBody(ResponseInterface $response, bool $asArray = false): ar
 
                 if ($chr === $startToken) {
                     $startCount++;
-                } else if ($chr === $endToken) {
-                    $endCount++;
+                } else {
+                    if ($chr === $endToken) {
+                        $endCount++;
+                    }
                 }
 
                 if ($startCount === $endCount) {
@@ -233,4 +264,22 @@ function decodeMultiBody(ResponseInterface $response, bool $asArray = false): ar
     }
 
     return [$parts, null];
+}
+
+/**
+ * @param string $param
+ * @param string $default
+ * @return string
+ */
+function tryGetEnvParam(string $param, string $default = ''): string
+{
+    if (isset($_ENV[$param])) {
+        return $_ENV[$param];
+    } elseif (false !== ($value = getenv($param))) {
+        return $value;
+    } elseif (isset($_SERVER[$param])) {
+        return $_SERVER[$param];
+    } else {
+        return $default;
+    }
 }

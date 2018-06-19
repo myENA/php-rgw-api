@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -26,7 +28,8 @@ use MyENA\RGW\AbstractModel;
  * Class AbstractMetadataResponse
  * @package MyENA\RGW\Models
  */
-abstract class AbstractMetadataResponse extends AbstractModel {
+abstract class AbstractMetadataResponse extends AbstractModel
+{
     /** @var string */
     protected $key = '';
     /** @var string */
@@ -38,7 +41,8 @@ abstract class AbstractMetadataResponse extends AbstractModel {
      * AbstractMetadataModel constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->ver)) {
             $this->ver = new MetadataVersion($this->ver);
@@ -48,21 +52,24 @@ abstract class AbstractMetadataResponse extends AbstractModel {
     /**
      * @return string
      */
-    public function getKey(): string {
+    public function getKey(): string
+    {
         return $this->key;
     }
 
     /**
      * @return string
      */
-    public function getMtime(): string {
+    public function getMtime(): string
+    {
         return $this->mtime;
     }
 
     /**
      * @return \MyENA\RGW\Models\MetadataVersion
      */
-    public function getVer(): ?MetadataVersion {
+    public function getVer(): ?MetadataVersion
+    {
         return $this->ver;
     }
 }

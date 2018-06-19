@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Error;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Error;
 
 use MyENA\RGW\Error;
 
@@ -6,7 +8,8 @@ use MyENA\RGW\Error;
  * Class AbstractError
  * @package MyENA\RGW\Error
  */
-abstract class AbstractError implements Error {
+abstract class AbstractError implements Error
+{
     /** @var int */
     private $code;
     /** @var string */
@@ -14,10 +17,11 @@ abstract class AbstractError implements Error {
 
     /**
      * AbstractError constructor.
-     * @param int    $code
+     * @param int $code
      * @param string $reason
      */
-    public function __construct(int $code, string $reason) {
+    public function __construct(int $code, string $reason)
+    {
         $this->code = $code;
         $this->reason = $reason;
     }
@@ -25,14 +29,16 @@ abstract class AbstractError implements Error {
     /**
      * @return int
      */
-    public function getCode(): int {
+    public function getCode(): int
+    {
         return $this->code;
     }
 
     /**
      * @return string
      */
-    public function getReason(): string {
+    public function getReason(): string
+    {
         return $this->reason;
     }
 }

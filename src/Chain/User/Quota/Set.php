@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\User\Quota;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\User\Quota;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Links\ExecutableLink;
@@ -12,7 +14,8 @@ use MyENA\RGW\Validators;
  * Class Set
  * @package MyENA\RGW\Chain\User\Quota
  */
-class Set extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink {
+class Set extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
+{
     const METHOD = 'PUT';
 
     const PARAM_QUOTA_TYPE  = 'quota-type';
@@ -26,18 +29,20 @@ class Set extends AbstractLink implements MethodLink, ParameterLink, ExecutableL
     /**
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return self::METHOD;
     }
 
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 (new SingleParameter(self::PARAM_QUOTA_TYPE, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::OneOf('user', 'bucket')),
                 (new SingleParameter(self::PARAM_MAX_OBJECTS, Parameter::IN_QUERY))
                     ->addValidator(Validators::Integer()),
@@ -56,7 +61,8 @@ class Set extends AbstractLink implements MethodLink, ParameterLink, ExecutableL
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public function execute(): array {
+    public function execute(): array
+    {
         /** @var \Psr\Http\Message\ResponseInterface $resp */
         /** @var \MyENA\RGW\Error $err */
         [$_, $err] = $this->client->do($this->buildRequest());

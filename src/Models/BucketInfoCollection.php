@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModelCollection;
 
@@ -14,11 +16,13 @@ use MyENA\RGW\AbstractModelCollection;
  * Class BucketInfoCollection
  * @package MyENA\RGW\Models
  */
-class BucketInfoCollection extends AbstractModelCollection {
+class BucketInfoCollection extends AbstractModelCollection
+{
     /**
      * @return string
      */
-    protected function containedType(): string {
+    protected function containedType(): string
+    {
         return BucketInfo::class;
     }
 }

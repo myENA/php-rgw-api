@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -25,7 +27,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketPlacement
  * @package MyENA\RGW\Models
  */
-class BucketPlacement extends AbstractModel {
+class BucketPlacement extends AbstractModel
+{
     /** @var string */
     protected $dataPool = 0;
     /** @var string */
@@ -36,21 +39,24 @@ class BucketPlacement extends AbstractModel {
     /**
      * @return string
      */
-    public function getDataPool(): string {
+    public function getDataPool(): string
+    {
         return $this->dataPool;
     }
 
     /**
      * @return string
      */
-    public function getDataExtraPool(): string {
+    public function getDataExtraPool(): string
+    {
         return $this->dataExtraPool;
     }
 
     /**
      * @return string
      */
-    public function getIndexPool(): string {
+    public function getIndexPool(): string
+    {
         return $this->indexPool;
     }
 }

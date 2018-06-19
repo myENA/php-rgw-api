@@ -1,21 +1,25 @@
-<?php namespace MyENA\RGW\Error;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Error;
 
 /**
  * Class ResponseError
  * @package MyENA\RGW\Error
  */
-class ResponseError extends AbstractError {
+class ResponseError extends AbstractError
+{
 
     /** @var string */
     protected $contents;
 
     /**
      * ResponseError constructor.
-     * @param int    $code
+     * @param int $code
      * @param string $reason
      * @param string $contents
      */
-    public function __construct(int $code, string $reason, string $contents = '') {
+    public function __construct(int $code, string $reason, string $contents = '')
+    {
         parent::__construct($code, $reason);
         $this->contents = $contents;
     }
@@ -23,42 +27,48 @@ class ResponseError extends AbstractError {
     /**
      * @return string
      */
-    public function getContents(): string {
+    public function getContents(): string
+    {
         return $this->contents;
     }
 
     /**
      * @return bool
      */
-    public function isTransportError(): bool {
+    public function isTransportError(): bool
+    {
         return false;
     }
 
     /**
      * @return bool
      */
-    public function isApiError(): bool {
+    public function isApiError(): bool
+    {
         return false;
     }
 
     /**
      * @return bool
      */
-    public function isResponseError(): bool {
+    public function isResponseError(): bool
+    {
         return true;
     }
 
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return sprintf('Json Decode error: %d %s', $this->getCode(), $this->getReason());
     }
 
     /**
      * @return array
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'code'   => $this->getCode(),
             'reason' => $this->getReason(),

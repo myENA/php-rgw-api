@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -41,7 +43,8 @@ use MyENA\RGW\AbstractModel;
  * Class StatisticsEntry
  * @package MyENA\RGW\Models
  */
-class StatisticsEntry extends AbstractModel {
+class StatisticsEntry extends AbstractModel
+{
     /** @var int */
     protected $sizeKb = 0;
     /** @var int */
@@ -60,49 +63,56 @@ class StatisticsEntry extends AbstractModel {
     /**
      * @return int
      */
-    public function getSizeKb(): int {
+    public function getSizeKb(): int
+    {
         return $this->sizeKb;
     }
 
     /**
      * @return int
      */
-    public function getSizeKbActual(): int {
+    public function getSizeKbActual(): int
+    {
         return $this->sizeKbActual;
     }
 
     /**
      * @return int
      */
-    public function getNumObjects(): int {
+    public function getNumObjects(): int
+    {
         return $this->numObjects;
     }
 
     /**
      * @return int
      */
-    public function getSize(): int {
+    public function getSize(): int
+    {
         return $this->size;
     }
 
     /**
      * @return int
      */
-    public function getSizeActual(): int {
+    public function getSizeActual(): int
+    {
         return $this->sizeActual;
     }
 
     /**
      * @return int
      */
-    public function getSizeUtilized(): int {
+    public function getSizeUtilized(): int
+    {
         return $this->sizeUtilized;
     }
 
     /**
      * @return int
      */
-    public function getSizeKbUtilized(): int {
+    public function getSizeKbUtilized(): int
+    {
         return $this->sizeKbUtilized;
     }
 }

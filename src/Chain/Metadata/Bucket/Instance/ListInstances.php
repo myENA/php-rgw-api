@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\Metadata\Bucket\Instance;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\Metadata\Bucket\Instance;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Links\ExecutableLink;
@@ -9,13 +11,15 @@ use function MyENA\RGW\decodeBody;
  * Class ListInstances
  * @package MyENA\RGW\Chain\Metadata\Bucket\Instance
  */
-class ListInstances extends AbstractLink implements MethodLink, ExecutableLink {
+class ListInstances extends AbstractLink implements MethodLink, ExecutableLink
+{
     const METHOD = 'GET';
 
     /**
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return self::METHOD;
     }
 
@@ -25,7 +29,8 @@ class ListInstances extends AbstractLink implements MethodLink, ExecutableLink {
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public function execute(): array {
+    public function execute(): array
+    {
         /** @var \Psr\Http\Message\ResponseInterface $resp */
         /** @var \MyENA\RGW\Error $err */
         [$resp, $err] = $this->client->do($this->buildRequest());

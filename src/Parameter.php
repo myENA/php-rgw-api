@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 /**
  * Interface Parameter
  * @package MyENA\RGW
  */
-interface Parameter {
+interface Parameter
+{
     const IN_ROUTE = 'route';
     const IN_QUERY = 'query';
 
@@ -19,14 +22,21 @@ interface Parameter {
     public function isRequired(): bool;
 
     /**
-     * Marks this variable as required
+     * Marks this parameter as requiring a value be defined.
      *
      * @return static
      */
-    public function required(): Parameter;
+    public function requireValue(): Parameter;
 
     /**
-     * Must set the default value for this variable
+     * Marks this parameter as requiring its value to not be empty, if defined with one.
+     *
+     * @return \MyENA\RGW\Parameter
+     */
+    public function requireNotEmpty(): Parameter;
+
+    /**
+     * Must set the default value for this parameter
      *
      * @param mixed $value
      * @return static
@@ -79,7 +89,7 @@ interface Parameter {
     public function getValidator(string $name): ?Validator;
 
     /**
-     * Must return all validators set on this variable, or an empty array of no validators are set.
+     * Must return all validators set on this parameter, or an empty array of no validators are set.
      *
      * @return \MyENA\RGW\Validator[]
      */

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -18,7 +20,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketIndexUsage
  * @package MyENA\RGW\Models
  */
-class BucketIndexUsage extends AbstractModel {
+class BucketIndexUsage extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\BucketUsage */
     protected $usage = null;
 
@@ -26,7 +29,8 @@ class BucketIndexUsage extends AbstractModel {
      * BucketIndexUsage constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->usage)) {
             $this->usage = new BucketUsage($this->usage);
@@ -36,7 +40,8 @@ class BucketIndexUsage extends AbstractModel {
     /**
      * @return \MyENA\RGW\Models\BucketUsage
      */
-    public function getUsage(): BucketUsage {
+    public function getUsage(): BucketUsage
+    {
         return $this->usage;
     }
 }

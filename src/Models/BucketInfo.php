@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -80,7 +82,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketInfo
  * @package MyENA\RGW\Models
  */
-class BucketInfo extends AbstractModel {
+class BucketInfo extends AbstractModel
+{
     /** @var string */
     protected $bucket = '';
     /** @var string */
@@ -118,7 +121,8 @@ class BucketInfo extends AbstractModel {
      * BucketStatsResponse constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->usage)) {
             $this->usage = new BucketUsage($this->usage);
@@ -134,112 +138,128 @@ class BucketInfo extends AbstractModel {
     /**
      * @return string
      */
-    public function getBucket(): string {
+    public function getBucket(): string
+    {
         return $this->bucket;
     }
 
     /**
      * @return string
      */
-    public function getPool(): string {
+    public function getPool(): string
+    {
         return $this->pool;
     }
 
     /**
      * @return string
      */
-    public function getIndexPool(): string {
+    public function getIndexPool(): string
+    {
         return $this->indexPool;
     }
 
     /**
      * @return string
      */
-    public function getId(): string {
+    public function getId(): string
+    {
         return $this->id;
     }
 
     /**
      * @return string
      */
-    public function getMarker(): string {
+    public function getMarker(): string
+    {
         return $this->marker;
     }
 
     /**
      * @return string
      */
-    public function getOwner(): string {
+    public function getOwner(): string
+    {
         return $this->owner;
     }
 
     /**
      * @return string
      */
-    public function getVer(): string {
+    public function getVer(): string
+    {
         return $this->ver;
     }
 
     /**
      * @return string
      */
-    public function getMasterVer(): string {
+    public function getMasterVer(): string
+    {
         return $this->masterVer;
     }
 
     /**
      * @return string
      */
-    public function getMtime(): string {
+    public function getMtime(): string
+    {
         return $this->mtime;
     }
 
     /**
      * @return string
      */
-    public function getMaxMarker(): string {
+    public function getMaxMarker(): string
+    {
         return $this->maxMarker;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketUsage
      */
-    public function getUsage(): ?BucketUsage {
+    public function getUsage(): ?BucketUsage
+    {
         return $this->usage;
     }
 
     /**
      * @return \MyENA\RGW\Models\QuotaMeta
      */
-    public function getBucketQuota(): ?QuotaMeta {
+    public function getBucketQuota(): ?QuotaMeta
+    {
         return $this->bucketQuota;
     }
 
     /**
      * @return string
      */
-    public function getZonegroup(): string {
+    public function getZonegroup(): string
+    {
         return $this->zonegroup;
     }
 
     /**
      * @return string
      */
-    public function getPlacementRule(): string {
+    public function getPlacementRule(): string
+    {
         return $this->placementRule;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketPlacement
      */
-    public function getExplicitPlacement(): ?BucketPlacement {
+    public function getExplicitPlacement(): ?BucketPlacement
+    {
         return $this->explicitPlacement;
     }
 
     /**
      * @return string
      */
-    public function getIndexType(): string {
+    public function getIndexType(): string
+    {
         return $this->indexType;
     }
 }

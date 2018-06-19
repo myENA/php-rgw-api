@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 /**
  * Interface Error
  * @package MyENA\RGW
  */
-interface Error extends \JsonSerializable {
+interface Error extends \JsonSerializable
+{
     /**
      * Returns the code as it makes sense in the scope of the error.
      *

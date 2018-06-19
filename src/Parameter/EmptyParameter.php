@@ -1,20 +1,24 @@
-<?php namespace MyENA\RGW\Parameter;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Parameter;
 
 use MyENA\RGW\AbstractParameter;
 use MyENA\RGW\Parameter;
-use function MyENA\RGW\stringifyValue;
 use MyENA\RGW\Validator;
+use function MyENA\RGW\stringifyValue;
 
 /**
  * Class EmptyParameter
  * @package MyENA\RGW\Parameter
  */
-class EmptyParameter extends AbstractParameter {
+class EmptyParameter extends AbstractParameter
+{
     /**
      * EmptyParameter constructor.
      * @param string $name
      */
-    public function __construct(string $name) {
+    public function __construct(string $name)
+    {
         parent::__construct($name, Parameter::IN_QUERY);
     }
 
@@ -22,7 +26,8 @@ class EmptyParameter extends AbstractParameter {
      * @param mixed $defaultValue
      * @return \MyENA\RGW\Parameter
      */
-    public function setDefaultValue($defaultValue): Parameter {
+    public function setDefaultValue($defaultValue): Parameter
+    {
         throw new \BadMethodCallException(sprintf(
             'EmptyParameter %s cannot have a default value of %s',
             $this->getName(),
@@ -33,7 +38,8 @@ class EmptyParameter extends AbstractParameter {
     /**
      * @return mixed|null|void
      */
-    public function getDefaultValue() {
+    public function getDefaultValue()
+    {
         throw new \BadMethodCallException(sprintf(
             'EmptyParameter %s cannot have a default value',
             $this->getName()
@@ -44,7 +50,8 @@ class EmptyParameter extends AbstractParameter {
      * @param \MyENA\RGW\Validator $validator
      * @return \MyENA\RGW\Parameter
      */
-    public function addValidator(Validator $validator): Parameter {
+    public function addValidator(Validator $validator): Parameter
+    {
         throw new \BadMethodCallException(sprintf(
             'Cannot add validator %s to EmptyParameter %s as there is nothing to validate',
             $validator->name(),
@@ -55,7 +62,8 @@ class EmptyParameter extends AbstractParameter {
     /**
      * @return null|string
      */
-    public function getEncodedValue(): ?string {
+    public function getEncodedValue(): ?string
+    {
         throw new \BadMethodCallException(sprintf(
             'EmptyParameter %s has no value',
             $this->getName()
@@ -65,7 +73,8 @@ class EmptyParameter extends AbstractParameter {
     /**
      * @return mixed|void
      */
-    public function getValue() {
+    public function getValue()
+    {
         throw new \BadMethodCallException(sprintf(
             'EmptyParameter %s has no value',
             $this->getName()
@@ -75,7 +84,8 @@ class EmptyParameter extends AbstractParameter {
     /**
      * @return bool
      */
-    public function isValid(): bool {
+    public function isValid(): bool
+    {
         return true;
     }
 }

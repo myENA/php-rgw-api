@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\User;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\User;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Chain\User\Capabilities\Add;
@@ -14,21 +16,22 @@ use MyENA\RGW\Validators;
  * Class Capabilities
  * @package MyENA\RGW\Chain\User
  */
-class Capabilities extends AbstractLink implements ParameterLink {
+class Capabilities extends AbstractLink implements ParameterLink
+{
+    const PARAM_UID = 'uid';
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;
-
-    const PARAM_UID = 'uid';
 
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 new EmptyParameter('caps'),
                 (new SingleParameter(self::PARAM_UID, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::String()),
             ];
         }
@@ -40,7 +43,8 @@ class Capabilities extends AbstractLink implements ParameterLink {
      * @param \MyENA\RGW\Models\UserCapability ...$capabilities
      * @return \MyENA\RGW\Chain\User\Capabilities\Add
      */
-    public function Add(UserCapability ...$capabilities): Add {
+    public function Add(UserCapability ...$capabilities): Add
+    {
         return Add::new($this, [Add::PARAM_USER_CAPABILITIES => $capabilities]);
     }
 
@@ -48,7 +52,8 @@ class Capabilities extends AbstractLink implements ParameterLink {
      * @param \MyENA\RGW\Models\UserCapability ...$capabilities
      * @return \MyENA\RGW\Chain\User\Capabilities\Remove
      */
-    public function Remove(UserCapability ...$capabilities): Remove {
+    public function Remove(UserCapability ...$capabilities): Remove
+    {
         return Remove::new($this, [Remove::PARAM_USER_CAPABILITIES => $capabilities]);
     }
 }

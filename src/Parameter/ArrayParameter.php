@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Parameter;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Parameter;
 
 use MyENA\RGW\AbstractParameter;
 use function MyENA\RGW\encodeValue;
@@ -7,7 +9,8 @@ use function MyENA\RGW\encodeValue;
  * Class ArrayParameter
  * @package MyENA\RGW\Parameter
  */
-class ArrayParameter extends AbstractParameter implements \Iterator, \Countable {
+class ArrayParameter extends AbstractParameter implements \Iterator, \Countable
+{
     /** @var array */
     private $values = [];
 
@@ -15,7 +18,8 @@ class ArrayParameter extends AbstractParameter implements \Iterator, \Countable 
      * @param mixed $value
      * @return static
      */
-    public function addValue($value): ArrayParameter {
+    public function addValue($value): ArrayParameter
+    {
         if (null === $value) { // TODO: Not sure I like this...
             return $this;
         }
@@ -27,7 +31,8 @@ class ArrayParameter extends AbstractParameter implements \Iterator, \Countable 
     /**
      * @return bool
      */
-    public function isValid(): bool {
+    public function isValid(): bool
+    {
         $this->failedValidator = null;
         if (!$this->isRequired() && 0 === count($this)) {
             return true;
@@ -46,7 +51,8 @@ class ArrayParameter extends AbstractParameter implements \Iterator, \Countable 
     /**
      * @return null|string
      */
-    public function getEncodedValue(): ?string {
+    public function getEncodedValue(): ?string
+    {
         if (0 === count($this)) {
             if (null !== ($def = $this->getDefaultValue())) {
                 return encodeValue($def);
@@ -63,43 +69,50 @@ class ArrayParameter extends AbstractParameter implements \Iterator, \Countable 
     /**
      * @return array
      */
-    public function getValue() {
+    public function getValue()
+    {
         return $this->values;
     }
 
     /**
      * @return mixed
      */
-    public function current() {
+    public function current()
+    {
         return current($this->values);
     }
 
-    public function next() {
+    public function next()
+    {
         next($this->values);
     }
 
     /**
      * @return int
      */
-    public function key() {
+    public function key()
+    {
         return key($this->values);
     }
 
     /**
      * @return bool
      */
-    public function valid() {
+    public function valid()
+    {
         return null !== key($this->values);
     }
 
-    public function rewind() {
+    public function rewind()
+    {
         reset($this->values);
     }
 
     /**
      * @return int
      */
-    public function count() {
+    public function count()
+    {
         return count($this->values);
     }
 }

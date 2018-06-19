@@ -1,10 +1,16 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
+
+use MyENA\RGW\Validator\NotEmptyValidator;
+use MyENA\RGW\Validator\RequiredValidator;
 
 /**
  * Class AbstractParameter
  * @package MyENA\RGW
  */
-abstract class AbstractParameter implements Parameter {
+abstract class AbstractParameter implements Parameter
+{
     /** @var string */
     protected $name = '';
     /** @var string */
@@ -24,7 +30,8 @@ abstract class AbstractParameter implements Parameter {
      * @param string $name
      * @param string $location
      */
-    public function __construct(string $name, string $location) {
+    public function __construct(string $name, string $location)
+    {
         if ('' === ($name = trim($name))) {
             throw new \InvalidArgumentException('name cannot be empty');
         }
@@ -37,21 +44,57 @@ abstract class AbstractParameter implements Parameter {
         }
         $this->location = $location;
         if (self::IN_ROUTE === $location) {
-            $this->required();
+            $this->requireValue();
+            $this->requireNotEmpty();
         }
+    }
+
+    /**
+     * Mark this parameter as "required", meaning it must either have a specific or default value
+     *
+     * @return \MyENA\RGW\Parameter\SingleParameter
+     */
+    public function requireValue(): Parameter
+    {
+        $this->validators = [
+                RequiredValidator::NAME => Validators::Required(),
+            ] + $this->validators;
+        return $this;
+    }
+
+    /**
+     * Marks this parameter as requiring its value to be "non-empty", if one is defined.
+     *
+     * @return \MyENA\RGW\Parameter
+     */
+    public function requireNotEmpty(): Parameter
+    {
+        if (isset($this->validators[RequiredValidator::NAME])) {
+            $this->validators = [
+                    RequiredValidator::NAME => Validators::Required(),
+                    NotEmptyValidator::NAME => Validators::NotEmpty(),
+                ] + $this->validators;
+        } else {
+            $this->validators = [
+                    NotEmptyValidator::NAME => Validators::NotEmpty(),
+                ] + $this->validators;
+        }
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name;
     }
 
     /**
      * @return string
      */
-    public function getLocation(): string {
+    public function getLocation(): string
+    {
         return $this->location;
     }
 
@@ -60,20 +103,9 @@ abstract class AbstractParameter implements Parameter {
      *
      * @return bool
      */
-    public function isRequired(): bool {
+    public function isRequired(): bool
+    {
         return isset($this->validators[Validator\RequiredValidator::NAME]);
-    }
-
-    /**
-     * Mark this parameter as "required", meaning it must either have a specific or default value
-     *
-     * @return \MyENA\RGW\Parameter\SingleParameter
-     */
-    public function required(): Parameter {
-        $this->validators = [
-                Validator\RequiredValidator::NAME => new Validator\RequiredValidator(),
-            ] + $this->validators;
-        return $this;
     }
 
     /**
@@ -82,7 +114,8 @@ abstract class AbstractParameter implements Parameter {
      * @param mixed $defaultValue
      * @return static
      */
-    public function setDefaultValue($defaultValue): Parameter {
+    public function setDefaultValue($defaultValue): Parameter
+    {
         if (isset($this->default) && $this->default !== $defaultValue) {
             unset($this->failedValidator);
         }
@@ -97,7 +130,8 @@ abstract class AbstractParameter implements Parameter {
     /**
      * @return mixed|null
      */
-    public function getDefaultValue() {
+    public function getDefaultValue()
+    {
         return $this->default ?? null;
     }
 
@@ -105,7 +139,8 @@ abstract class AbstractParameter implements Parameter {
      * @param \MyENA\RGW\Validator $validator
      * @return \MyENA\RGW\Parameter\SingleParameter
      */
-    public function addValidator(Validator $validator): Parameter {
+    public function addValidator(Validator $validator): Parameter
+    {
         $this->validators[$validator->name()] = $validator;
         return $this;
     }
@@ -115,7 +150,8 @@ abstract class AbstractParameter implements Parameter {
      *
      * @return \MyENA\RGW\Validator[]
      */
-    public function getValidators(): array {
+    public function getValidators(): array
+    {
         return $this->validators;
     }
 
@@ -125,7 +161,8 @@ abstract class AbstractParameter implements Parameter {
      * @param string $name
      * @return \MyENA\RGW\Validator|null
      */
-    public function getValidator(string $name): ?Validator {
+    public function getValidator(string $name): ?Validator
+    {
         return $this->validators[$name] ?? null;
     }
 
@@ -134,7 +171,8 @@ abstract class AbstractParameter implements Parameter {
      *
      * @return \MyENA\RGW\Validator|null
      */
-    public function getFailedValidator(): ?Validator {
+    public function getFailedValidator(): ?Validator
+    {
         return $this->failedValidator ?? null;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\Bucket;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\Bucket;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Chain\Bucket\Info\All;
@@ -14,10 +16,11 @@ use MyENA\RGW\Validators;
  * Class Info
  * @package MyENA\RGW\Chain\Bucket
  */
-class Info extends AbstractLink implements MethodLink, ParameterLink {
+class Info extends AbstractLink implements MethodLink, ParameterLink
+{
     const METHOD = 'GET';
 
-    const PARAM_UID    = 'uid';
+    const PARAM_UID = 'uid';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;
@@ -25,19 +28,21 @@ class Info extends AbstractLink implements MethodLink, ParameterLink {
     /**
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return self::METHOD;
     }
 
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 new FixedSingleParameter('stats', Parameter::IN_QUERY, true),
                 (new SingleParameter(self::PARAM_UID, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::String()),
             ];
         }
@@ -48,14 +53,16 @@ class Info extends AbstractLink implements MethodLink, ParameterLink {
      * @param string $bucket
      * @return \MyENA\RGW\Chain\Bucket\Info\One
      */
-    public function One(string $bucket): One {
+    public function One(string $bucket): One
+    {
         return One::new($this, [One::PARAM_BUCKET => $bucket]);
     }
 
     /**
      * @return \MyENA\RGW\Chain\Bucket\Info\All
      */
-    public function All(): All {
+    public function All(): All
+    {
         return All::new($this);
     }
 }

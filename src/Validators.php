@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 use MyENA\RGW\Validator\BooleanValidator;
 use MyENA\RGW\Validator\BucketNameValidator;
@@ -6,8 +8,7 @@ use MyENA\RGW\Validator\CustomValidator;
 use MyENA\RGW\Validator\EmailValidator;
 use MyENA\RGW\Validator\InstanceOfValidator;
 use MyENA\RGW\Validator\IntegerValidator;
-use MyENA\RGW\Validator\IPv4Validator;
-use MyENA\RGW\Validator\MACValidator;
+use MyENA\RGW\Validator\NotEmptyValidator;
 use MyENA\RGW\Validator\OneOfValidator;
 use MyENA\RGW\Validator\RequiredValidator;
 use MyENA\RGW\Validator\StringValidator;
@@ -18,9 +19,12 @@ use MyENA\RGW\Validator\UserCapabilityValidator;
  * Class Validators
  * @package MyENA\RGW\Request\Parameter
  */
-abstract class Validators {
+abstract class Validators
+{
     /** @var \MyENA\RGW\Validator\RequiredValidator */
     private static $required;
+    /** @var \MyENA\RGW\Validator\NotEmptyValidator */
+    private static $notEmpty;
 
     /** @var \MyENA\RGW\Validator\StringValidator */
     private static $string;
@@ -29,10 +33,6 @@ abstract class Validators {
     /** @var \MyENA\RGW\Validator\BooleanValidator */
     private static $boolean;
 
-    /** @var \MyENA\RGW\Validator\IPv4Validator */
-    private static $ipv4;
-    /** @var \MyENA\RGW\Validator\MACValidator */
-    private static $mac;
     /** @var \MyENA\RGW\Validator\EmailValidator */
     private static $email;
     /** @var \MyENA\RGW\Validator\TenantNameValidator */
@@ -45,7 +45,8 @@ abstract class Validators {
     /**
      * @return \MyENA\RGW\Validator\RequiredValidator
      */
-    public static function Required(): RequiredValidator {
+    public static function Required(): RequiredValidator
+    {
         if (!isset(self::$required)) {
             self::$required = new RequiredValidator();
         }
@@ -53,9 +54,21 @@ abstract class Validators {
     }
 
     /**
+     * @return \MyENA\RGW\Validator\NotEmptyValidator
+     */
+    public static function NotEmpty(): NotEmptyValidator
+    {
+        if (!isset(self::$notEmpty)) {
+            self::$notEmpty = new NotEmptyValidator();
+        }
+        return self::$notEmpty;
+    }
+
+    /**
      * @return \MyENA\RGW\Validator\StringValidator
      */
-    public static function String(): StringValidator {
+    public static function String(): StringValidator
+    {
         if (!isset(self::$string)) {
             self::$string = new StringValidator();
         }
@@ -65,7 +78,16 @@ abstract class Validators {
     /**
      * @return \MyENA\RGW\Validator\IntegerValidator
      */
-    public static function Integer(): IntegerValidator {
+    public static function Int(): IntegerValidator
+    {
+        return self::Integer();
+    }
+
+    /**
+     * @return \MyENA\RGW\Validator\IntegerValidator
+     */
+    public static function Integer(): IntegerValidator
+    {
         if (!isset(self::$integer)) {
             self::$integer = new IntegerValidator();
         }
@@ -73,16 +95,18 @@ abstract class Validators {
     }
 
     /**
-     * @return \MyENA\RGW\Validator\IntegerValidator
+     * @return \MyENA\RGW\Validator\BooleanValidator
      */
-    public static function Int(): IntegerValidator {
-        return self::Integer();
+    public static function Bool(): BooleanValidator
+    {
+        return self::Boolean();
     }
 
     /**
      * @return \MyENA\RGW\Validator\BooleanValidator
      */
-    public static function Boolean(): BooleanValidator {
+    public static function Boolean(): BooleanValidator
+    {
         if (!isset(self::$boolean)) {
             self::$boolean = new BooleanValidator();
         }
@@ -90,36 +114,10 @@ abstract class Validators {
     }
 
     /**
-     * @return \MyENA\RGW\Validator\BooleanValidator
-     */
-    public static function Bool(): BooleanValidator {
-        return self::Boolean();
-    }
-
-    /**
-     * @return \MyENA\RGW\Validator\IPv4Validator
-     */
-    public static function IPv4(): IPv4Validator {
-        if (!isset(self::$ipv4)) {
-            self::$ipv4 = new IPv4Validator();
-        }
-        return self::$ipv4;
-    }
-
-    /**
-     * @return \MyENA\RGW\Validator\MACValidator
-     */
-    public static function MAC(): MACValidator {
-        if (!isset(self::$mac)) {
-            self::$mac = new MACValidator();
-        }
-        return self::$mac;
-    }
-
-    /**
      * @return \MyENA\RGW\Validator\EmailValidator
      */
-    public static function Email(): EmailValidator {
+    public static function Email(): EmailValidator
+    {
         if (!isset(self::$email)) {
             self::$email = new EmailValidator();
         }
@@ -129,7 +127,8 @@ abstract class Validators {
     /**
      * @return \MyENA\RGW\Validator\TenantNameValidator
      */
-    public static function TenantName(): TenantNameValidator {
+    public static function TenantName(): TenantNameValidator
+    {
         if (!isset(self::$tenantName)) {
             self::$tenantName = new TenantNameValidator();
         }
@@ -139,7 +138,8 @@ abstract class Validators {
     /**
      * @return \MyENA\RGW\Validator\UserCapabilityValidator
      */
-    public static function UserCapability(): UserCapabilityValidator {
+    public static function UserCapability(): UserCapabilityValidator
+    {
         if (!isset(self::$userCapability)) {
             self::$userCapability = new UserCapabilityValidator();
         }
@@ -149,7 +149,8 @@ abstract class Validators {
     /**
      * @return \MyENA\RGW\Validator\BucketNameValidator
      */
-    public static function BucketName(): BucketNameValidator {
+    public static function BucketName(): BucketNameValidator
+    {
         if (!isset(self::$bucketName)) {
             self::$bucketName = new BucketNameValidator();
         }
@@ -160,7 +161,8 @@ abstract class Validators {
      * @param mixed ...$values
      * @return \MyENA\RGW\Validator\OneOfValidator
      */
-    public static function OneOf(...$values): OneOfValidator {
+    public static function OneOf(...$values): OneOfValidator
+    {
         return new OneOfValidator($values);
     }
 
@@ -168,16 +170,23 @@ abstract class Validators {
      * @param string $class
      * @return \MyENA\RGW\Validator\InstanceOfValidator
      */
-    public static function InstanceOf(string $class): InstanceOfValidator {
+    public static function InstanceOf(string $class): InstanceOfValidator
+    {
         return new InstanceOfValidator($class);
     }
 
     /**
      * @param string $name
      * @param        $callable
+     * @param string $expects
      * @return \MyENA\RGW\Validator\CustomValidator
      */
-    public static function Custom(string $name, $callable): CustomValidator {
-        return new CustomValidator($name, $callable);
+    public static function Custom(string $name, $callable, string $expects = ''): CustomValidator
+    {
+        if ('' === $expects) {
+            return new CustomValidator($name, $callable);
+        } else {
+            return new CustomValidator($name, $callable, $expects);
+        }
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -33,7 +35,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketUsage
  * @package MyENA\RGW\Models
  */
-class BucketUsage extends AbstractModel {
+class BucketUsage extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\StatisticsEntry */
     protected $rgwNone = null;
     /** @var \MyENA\RGW\Models\StatisticsEntry */
@@ -47,7 +50,8 @@ class BucketUsage extends AbstractModel {
      * BucketUsage constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->rgwNone)) {
             $this->rgwNone = new StatisticsEntry($this->rgwNone);
@@ -66,35 +70,40 @@ class BucketUsage extends AbstractModel {
     /**
      * @return string
      */
-    public function _getKeyDelimiter(): string {
+    public function _getKeyDelimiter(): string
+    {
         return '.';
     }
 
     /**
      * @return \MyENA\RGW\Models\StatisticsEntry
      */
-    public function getRgwNone(): ?StatisticsEntry {
+    public function getRgwNone(): ?StatisticsEntry
+    {
         return $this->rgwNone;
     }
 
     /**
      * @return \MyENA\RGW\Models\StatisticsEntry
      */
-    public function getRgwMain(): ?StatisticsEntry {
+    public function getRgwMain(): ?StatisticsEntry
+    {
         return $this->rgwMain;
     }
 
     /**
      * @return \MyENA\RGW\Models\StatisticsEntry
      */
-    public function getRgwShadow(): ?StatisticsEntry {
+    public function getRgwShadow(): ?StatisticsEntry
+    {
         return $this->rgwShadow;
     }
 
     /**
      * @return \MyENA\RGW\Models\StatisticsEntry
      */
-    public function getRgwMultimeta(): ?StatisticsEntry {
+    public function getRgwMultimeta(): ?StatisticsEntry
+    {
         return $this->rgwMultimeta;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 use MyENA\RGW\Links\BodyLink;
 use MyENA\RGW\Links\ExecutableLink;
@@ -18,7 +20,8 @@ use Psr\Log\LoggerInterface;
  * Class AbstractLink
  * @package MyENA\RGW
  */
-abstract class AbstractLink implements LoggerAwareInterface {
+abstract class AbstractLink implements LoggerAwareInterface
+{
 
     use LoggerAwareTrait;
 
@@ -29,11 +32,12 @@ abstract class AbstractLink implements LoggerAwareInterface {
 
     /**
      * AbstractLink constructor.
-     * @param \MyENA\RGW\Client         $client
-     * @param \Psr\Log\LoggerInterface  $logger
+     * @param \MyENA\RGW\Client $client
+     * @param \Psr\Log\LoggerInterface $logger
      * @param \MyENA\RGW\AbstractLink[] $parents
      */
-    protected function __construct(Client $client, LoggerInterface $logger, AbstractLink ...$parents) {
+    protected function __construct(Client $client, LoggerInterface $logger, AbstractLink ...$parents)
+    {
         $this->client = $client;
         $this->logger = $logger;
         $this->parents = $parents;
@@ -42,21 +46,23 @@ abstract class AbstractLink implements LoggerAwareInterface {
     /**
      * TODO: Simplify a bit?
      *
-     * @param \MyENA\RGW\Client            $client
-     * @param \Psr\Log\LoggerInterface     $logger
-     * @param array                        $paramValueMap
+     * @param \MyENA\RGW\Client $client
+     * @param \Psr\Log\LoggerInterface $logger
+     * @param array $paramValueMap
      * @param \MyENA\RGW\AbstractLink|null $parent
      * @return static
      */
-    public static function new(?AbstractLink $parent = null,
-                               array $paramValueMap = [],
-                               ?Client $client = null,
-                               ?LoggerInterface $logger = null): AbstractLink {
+    public static function new(
+        ?AbstractLink $parent = null,
+        array $paramValueMap = [],
+        ?Client $client = null,
+        ?LoggerInterface $logger = null
+    ): AbstractLink {
         if (null !== $parent) {
             $client = $parent->client;
             $logger = $parent->logger;
             $parents = $parent->buildParentList();
-        } else if (null === $client || null === $logger) {
+        } elseif (null === $client || null === $logger) {
             throw new \LogicException(sprintf(
                 'Cannot construct %s, either a $parent must be passed or both $client and $logger must be passed',
                 static::class
@@ -65,7 +71,7 @@ abstract class AbstractLink implements LoggerAwareInterface {
         $link = new static($client, $logger, ...($parents ?? [])); // TODO: this is probably SUPER inefficient..
         if ($link instanceof ParameterLink) {
             $link->parseParameters($link, $paramValueMap);
-        } else if (0 !== ($cnt = count($paramValueMap))) {
+        } elseif (0 !== ($cnt = count($paramValueMap))) {
             throw new \DomainException(sprintf(
                 'Link %s does not have any parameters, yet %d were passed',
                 get_class($link),
@@ -76,9 +82,67 @@ abstract class AbstractLink implements LoggerAwareInterface {
     }
 
     /**
+     * @return \MyENA\RGW\AbstractLink[]
+     */
+    protected function buildParentList(): array
+    {
+        $p = [];
+        foreach ($this->parents as $parent) {
+            $p[] = clone $parent;
+        }
+        $p[] = clone $this;
+        return $p;
+    }
+
+    /**
+     * @param \MyENA\RGW\Links\ParameterLink $part
+     * @param array $defined
+     */
+    protected function parseParameters(ParameterLink $part, array $defined = []): void
+    {
+        foreach ($part->getParameters() as $parameter) {
+            $name = $parameter->getName();
+            $value = $defined[$name] ?? null;
+            if ($parameter instanceof SingleParameter) {
+                $parameter->setValue($value);
+            } elseif ($parameter instanceof ArrayParameter) {
+                if (is_array($value)) {
+                    foreach ($value as $v) {
+                        $parameter->addValue($v);
+                    }
+                } else {
+                    $parameter->addValue($value);
+                }
+            } elseif ($parameter instanceof EmptyParameter) {
+                if (null !== $value) {
+                    throw new \InvalidArgumentException(sprintf(
+                        'Cannot specify value for EmptyParameter %s',
+                        $name
+                    ));
+                }
+            } else {
+                throw new \DomainException(sprintf(
+                    '%s is not a valid parameter type',
+                    is_object($parameter) ? get_class($parameter) : gettype($parameter)
+                ));
+            }
+            if (!$parameter->isValid()) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Parameter %s failed %s validator with value: %s.  Expected: %s',
+                    $parameter->getName(),
+                    $parameter->getFailedValidator()->name(),
+                    !is_resource($parameter->getValue()) ? json_encode($parameter->getValue()) : 'resource',
+                    $parameter->getFailedValidator()->expectedStatement()
+                ));
+            }
+        }
+    }
+
+    /**
      * @return \MyENA\RGW\Request
      */
-    public function buildRequest(): Request {
+    public function buildRequest(): Request
+    {
         if ($this instanceof ExecutableLink) {
             return new Request(
                 $this->findMethod(),
@@ -94,63 +158,10 @@ abstract class AbstractLink implements LoggerAwareInterface {
     }
 
     /**
-     * @param \MyENA\RGW\Links\ParameterLink $part
-     * @param array                          $defined
-     */
-    protected function parseParameters(ParameterLink $part, array $defined = []): void {
-        foreach ($part->getParameters() as $parameter) {
-            $name = $parameter->getName();
-            $value = $defined[$name] ?? null;
-            if ($parameter instanceof SingleParameter) {
-                $parameter->setValue($value);
-            } else if ($parameter instanceof ArrayParameter) {
-                if (is_array($value)) {
-                    foreach ($value as $v) {
-                        $parameter->addValue($v);
-                    }
-                } else {
-                    $parameter->addValue($value);
-                }
-            } else if ($parameter instanceof EmptyParameter) {
-                if (null !== $value) {
-                    throw new \InvalidArgumentException(sprintf(
-                        'Cannot specify value for EmptyParameter %s',
-                        $name
-                    ));
-                }
-            } else {
-                throw new \DomainException(sprintf(
-                    '%s is not a valid parameter type',
-                    is_object($parameter) ? get_class($parameter) : gettype($parameter)
-                ));
-            }
-            if (!$parameter->isValid()) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Parameter %s failed %s validator with value: %s',
-                    $parameter->getName(),
-                    $parameter->getFailedValidator()->name(),
-                    !is_resource($parameter->getValue()) ? json_encode($parameter->getValue()) : 'resource'
-                ));
-            }
-        }
-    }
-
-    /**
-     * @return \MyENA\RGW\AbstractLink[]
-     */
-    protected function buildParentList(): array {
-        $p = [];
-        foreach ($this->parents as $parent) {
-            $p[] = clone $parent;
-        }
-        $p[] = clone $this;
-        return $p;
-    }
-
-    /**
      * @return string
      */
-    protected function findMethod(): string {
+    protected function findMethod(): string
+    {
         if ($this instanceof MethodLink) {
             return $this->getRequestMethod();
         } else {
@@ -164,9 +175,29 @@ abstract class AbstractLink implements LoggerAwareInterface {
     }
 
     /**
+     * @param string $missing
+     * @return \DomainException
+     */
+    protected function createInvalidChainException(string $missing): \DomainException
+    {
+        $parts = [];
+        foreach ($this->parents as $parent) {
+            $parts[] = get_class($parent);
+        }
+        $parts[] = get_class($this);
+
+        return new \DomainException(sprintf(
+            'Request Chain has no %s: ["%s"]',
+            $missing,
+            implode('", "', $parts)
+        ));
+    }
+
+    /**
      * @return string
      */
-    protected function buildUri(): string {
+    protected function buildUri(): string
+    {
         $routeParams = [];
         $uri = '';
         foreach ($this->parents as $parent) {
@@ -203,39 +234,8 @@ abstract class AbstractLink implements LoggerAwareInterface {
     /**
      * @return array
      */
-    protected function compileQueryParameters(): array {
-        $queryParams = [];
-        foreach ($this->parents as $parent) {
-            if ($parent instanceof ParameterLink) {
-                foreach ($parent->getParameters() as $parameter) {
-                    if ($parameter->getLocation() === Parameter::IN_QUERY) {
-                        if ($parameter instanceof EmptyParameter) {
-                            $queryParams[$parameter->getName()] = null;
-                        } else if (null !== ($value = $parameter->getEncodedValue())) {
-                            $queryParams[$parameter->getName()] = $value;
-                        }
-                    }
-                }
-            }
-        }
-        if ($this instanceof ParameterLink) {
-            foreach ($this->getParameters() as $parameter) {
-                if ($parameter->getLocation() === Parameter::IN_QUERY) {
-                    if ($parameter instanceof EmptyParameter) {
-                        $queryParams[$parameter->getName()] = null;
-                    } else if (null !== ($value = $parameter->getEncodedValue())) {
-                        $queryParams[$parameter->getName()] = $value;
-                    }
-                }
-            }
-        }
-        return $queryParams;
-    }
-
-    /**
-     * @return array
-     */
-    protected function compileRequestHeaders(): array {
+    protected function compileRequestHeaders(): array
+    {
         $headers = [];
         if ($this instanceof HeaderLink) {
             $headers = $this->getRequestHeaders();
@@ -245,13 +245,13 @@ abstract class AbstractLink implements LoggerAwareInterface {
                 foreach ($parent->getRequestHeaders() as $header => $value) {
                     if (!isset($headers[$header])) {
                         $headers[$header] = $value;
-                    } else if (is_array($headers[$header])) {
+                    } elseif (is_array($headers[$header])) {
                         if (is_array($value)) {
                             $headers[$header] = array_merge($headers[$header], $value);
                         } else {
                             $headers[$header][] = $value;
                         }
-                    } else if (is_array($value)) {
+                    } elseif (is_array($value)) {
                         $headers[$header] = array_merge([$headers[$header]], $value);
                     } else {
                         $headers[$header] = [$headers[$header], $value];
@@ -263,29 +263,45 @@ abstract class AbstractLink implements LoggerAwareInterface {
     }
 
     /**
-     * @param string $missing
-     * @return \DomainException
+     * @return array
      */
-    protected function createInvalidChainException(string $missing): \DomainException {
-        $parts = [];
+    protected function compileQueryParameters(): array
+    {
+        $queryParams = [];
         foreach ($this->parents as $parent) {
-            $parts[] = get_class($parent);
+            if ($parent instanceof ParameterLink) {
+                foreach ($parent->getParameters() as $parameter) {
+                    if ($parameter->getLocation() === Parameter::IN_QUERY) {
+                        if ($parameter instanceof EmptyParameter) {
+                            $queryParams[$parameter->getName()] = null;
+                        } elseif (null !== ($value = $parameter->getEncodedValue())) {
+                            $queryParams[$parameter->getName()] = $value;
+                        }
+                    }
+                }
+            }
         }
-        $parts[] = get_class($this);
-
-        return new \DomainException(sprintf(
-            'Request Chain has no %s: ["%s"]',
-            $missing,
-            implode('", "', $parts)
-        ));
+        if ($this instanceof ParameterLink) {
+            foreach ($this->getParameters() as $parameter) {
+                if ($parameter->getLocation() === Parameter::IN_QUERY) {
+                    if ($parameter instanceof EmptyParameter) {
+                        $queryParams[$parameter->getName()] = null;
+                    } elseif (null !== ($value = $parameter->getEncodedValue())) {
+                        $queryParams[$parameter->getName()] = $value;
+                    }
+                }
+            }
+        }
+        return $queryParams;
     }
 
     /**
      * @param string $expected
-     * @param mixed  $actual
+     * @param mixed $actual
      * @return \DomainException
      */
-    protected function createInvalidRequestBodyException(string $expected, $actual): \DomainException {
+    protected function createInvalidRequestBodyException(string $expected, $actual): \DomainException
+    {
         return new \DomainException(sprintf(
             'Link %s requires body of type %s, %s provided.',
             get_class($this),

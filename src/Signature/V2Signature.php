@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Signature;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Signature;
 
 use MyENA\RGW\Config;
 use MyENA\RGW\Signature;
@@ -9,13 +11,15 @@ use function MyENA\RGW\isS3VirtualHostedStyle;
  * Class V2Signature
  * @package MyENA\RGW\Signature
  */
-class V2Signature implements Signature {
+class V2Signature implements Signature
+{
     /**
      * @param \MyENA\RGW\Config $config
      * @param \Psr\Http\Message\RequestInterface $request
      * @return \Psr\Http\Message\RequestInterface
      */
-    public function sign(Config $config, RequestInterface $request): RequestInterface {
+    public function sign(Config $config, RequestInterface $request): RequestInterface
+    {
         if (!$config->isSilent()) {
             $config->getLogger()->debug(sprintf(
                 'Signing request "%s %s"',
@@ -32,18 +36,44 @@ class V2Signature implements Signature {
     }
 
     /**
-     * @param \Psr\Http\Message\RequestInterface $request
+     * @param string $string
+     * @param string $secret
      * @return string
      */
-    private function methodLine(RequestInterface $request): string {
-        return $request->getMethod()."\n";
+    private function signString(string $string, string $secret): string
+    {
+        return base64_encode(hash_hmac('sha1', $string, $secret, true));
     }
 
     /**
      * @param \Psr\Http\Message\RequestInterface $request
      * @return string
      */
-    private function bodyHashLine(RequestInterface $request): string {
+    private function stringToSignS3(RequestInterface $request): string
+    {
+        return $this->methodLine($request) .
+            $this->bodyHashLine($request) .
+            $this->contentTypeLine($request) .
+            $this->dateLine($request) .
+            $this->canonicalAmazonHeadersLines($request) .
+            $this->canonicalResourceS3Line($request);
+    }
+
+    /**
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @return string
+     */
+    private function methodLine(RequestInterface $request): string
+    {
+        return $request->getMethod() . "\n";
+    }
+
+    /**
+     * @param \Psr\Http\Message\RequestInterface $request
+     * @return string
+     */
+    private function bodyHashLine(RequestInterface $request): string
+    {
         if ('' !== ($md5 = (string)$request->getHeaderLine('Content-MD5'))) {
             return "{$md5}\n";
         }
@@ -64,7 +94,8 @@ class V2Signature implements Signature {
      * @param \Psr\Http\Message\RequestInterface $request
      * @return string
      */
-    private function contentTypeLine(RequestInterface $request): string {
+    private function contentTypeLine(RequestInterface $request): string
+    {
         $t = (string)$request->getHeaderLine('Content-Type');
         return "{$t}\n";
     }
@@ -73,7 +104,8 @@ class V2Signature implements Signature {
      * @param \Psr\Http\Message\RequestInterface $request
      * @return string
      */
-    private function dateLine(RequestInterface $request): string {
+    private function dateLine(RequestInterface $request): string
+    {
         $date = (string)$request->getHeaderLine('Date');
         if ('' === $date) {
             $date = gmdate(RGW_TIME_FORMAT);
@@ -85,7 +117,8 @@ class V2Signature implements Signature {
      * @param \Psr\Http\Message\RequestInterface $request
      * @return string
      */
-    private function canonicalAmazonHeadersLines(RequestInterface $request): string {
+    private function canonicalAmazonHeadersLines(RequestInterface $request): string
+    {
         $headers = [];
         foreach ($request->getHeaders() as $name => $_) {
             $standardized = strtolower(trim($name));
@@ -101,14 +134,15 @@ class V2Signature implements Signature {
             return '';
         }
         ksort($headers, SORT_STRING);
-        return implode("\n", $headers)."\n";
+        return implode("\n", $headers) . "\n";
     }
 
     /**
      * @param \Psr\Http\Message\RequestInterface $request
      * @return string
      */
-    private function canonicalResourceS3Line(RequestInterface $request): string {
+    private function canonicalResourceS3Line(RequestInterface $request): string
+    {
         $buff = '';
 
         if (isS3VirtualHostedStyle($request)) {
@@ -127,27 +161,5 @@ class V2Signature implements Signature {
         }
 
         return $buff;
-    }
-
-    /**
-     * @param \Psr\Http\Message\RequestInterface $request
-     * @return string
-     */
-    private function stringToSignS3(RequestInterface $request): string {
-        return $this->methodLine($request).
-            $this->bodyHashLine($request).
-            $this->contentTypeLine($request).
-            $this->dateLine($request).
-            $this->canonicalAmazonHeadersLines($request).
-            $this->canonicalResourceS3Line($request);
-    }
-
-    /**
-     * @param string $string
-     * @param string $secret
-     * @return string
-     */
-    private function signString(string $string, string $secret): string {
-        return base64_encode(hash_hmac('sha1', $string, $secret, true));
     }
 }

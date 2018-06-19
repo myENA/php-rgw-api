@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\User;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\User;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Chain\User\Quota\All;
@@ -14,7 +16,8 @@ use MyENA\RGW\Validators;
  * Class Quota
  * @package MyENA\RGW\Chain\User
  */
-class Quota extends AbstractLink implements ParameterLink {
+class Quota extends AbstractLink implements ParameterLink
+{
     const PARAM_UID = 'uid';
 
     /** @var \MyENA\RGW\Parameter[] */
@@ -23,12 +26,13 @@ class Quota extends AbstractLink implements ParameterLink {
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 new EmptyParameter('quota'),
                 (new SingleParameter(self::PARAM_UID, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::String()),
             ];
         }
@@ -38,7 +42,8 @@ class Quota extends AbstractLink implements ParameterLink {
     /**
      * @return \MyENA\RGW\Chain\User\Quota\All
      */
-    public function All(): All {
+    public function All(): All
+    {
         return All::new($this);
     }
 
@@ -46,21 +51,24 @@ class Quota extends AbstractLink implements ParameterLink {
      * @param string $quotaType
      * @return \MyENA\RGW\Chain\User\Quota\Get
      */
-    public function Get(string $quotaType): Get {
+    public function Get(string $quotaType): Get
+    {
         return Get::new($this, [Get::PARAM_QUOTA_TYPE => $quotaType]);
     }
 
     /**
      * @param string $quotaType
-     * @param int    $maximumObjects
-     * @param int    $maximumSizeKb
-     * @param bool   $enabled
+     * @param int $maximumObjects
+     * @param int $maximumSizeKb
+     * @param bool $enabled
      * @return \MyENA\RGW\Chain\User\Quota\Set
      */
-    public function Set(string $quotaType,
-                        ?int $maximumObjects = null,
-                        ?int $maximumSizeKb = null,
-                        bool $enabled = false): Set {
+    public function Set(
+        string $quotaType,
+        ?int $maximumObjects = null,
+        ?int $maximumSizeKb = null,
+        bool $enabled = false
+    ): Set {
         return Set::new(
             $this,
             [

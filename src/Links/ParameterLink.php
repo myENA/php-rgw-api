@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface ParameterLink
  * @package MyENA\RGW\Links
  */
-interface ParameterLink {
+interface ParameterLink
+{
 
     /**
      * Must return array of Parameters that will be used on execution.

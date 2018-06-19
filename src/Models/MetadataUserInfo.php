@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 /**
  * @SWG\Definition(
@@ -53,7 +55,8 @@
  * Class MetadataUserInfo
  * @package MyENA\RGW\Models
  */
-class MetadataUserInfo extends UserInfo {
+class MetadataUserInfo extends UserInfo
+{
     /** @var int */
     protected $auid = 0;
     /** @var string */
@@ -77,7 +80,8 @@ class MetadataUserInfo extends UserInfo {
      * MetadataUserInfo constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->bucketQuota)) {
             $this->bucketQuota = new QuotaMeta($this->bucketQuota);
@@ -97,63 +101,72 @@ class MetadataUserInfo extends UserInfo {
     /**
      * @return int
      */
-    public function getAuid(): int {
+    public function getAuid(): int
+    {
         return $this->auid;
     }
 
     /**
      * @return string
      */
-    public function getOpMask(): string {
+    public function getOpMask(): string
+    {
         return $this->opMask;
     }
 
     /**
      * @return string
      */
-    public function getDefaultPlacement(): string {
+    public function getDefaultPlacement(): string
+    {
         return $this->defaultPlacement;
     }
 
     /**
      * @return array
      */
-    public function getPlacementTags(): array {
+    public function getPlacementTags(): array
+    {
         return $this->placementTags;
     }
 
     /**
      * @return \MyENA\RGW\Models\QuotaMeta
      */
-    public function getBucketQuota(): ?QuotaMeta {
+    public function getBucketQuota(): ?QuotaMeta
+    {
         return $this->bucketQuota;
     }
 
     /**
      * @return \MyENA\RGW\Models\QuotaMeta
      */
-    public function getUserQuota(): ?QuotaMeta {
+    public function getUserQuota(): ?QuotaMeta
+    {
         return $this->userQuota;
     }
 
     /**
      * @return array
      */
-    public function getTempUrlKeys(): array {
+    public function getTempUrlKeys(): array
+    {
         return $this->tempUrlKeys;
     }
 
     /**
      * @return string
      */
-    public function getType(): string {
+    public function getType(): string
+    {
         return $this->type;
     }
 
     /**
      * @return \MyENA\RGW\Models\MetadataAttribute[]
      */
-    public function getAttrs(): array {
+    public function getAttrs(): array
+    {
         return $this->attrs;
     }
 }

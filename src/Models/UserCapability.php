@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -21,7 +23,8 @@ use MyENA\RGW\AbstractModel;
  * Class UserCapability
  * @package MyENA\RGW\Models
  */
-class UserCapability extends AbstractModel {
+class UserCapability extends AbstractModel
+{
 
     const KEY_TYPE = 'type';
     const KEY_PERM = 'perm';
@@ -46,11 +49,12 @@ class UserCapability extends AbstractModel {
      * UserCapability constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         $this->type = $data['type'] ?? '';
         if (isset($data['permission'])) {
             $this->permission = $data['permission'];
-        } else if (isset($data['perm'])) {
+        } elseif (isset($data['perm'])) {
             $this->permission = $data['perm'];
         }
     }
@@ -58,42 +62,48 @@ class UserCapability extends AbstractModel {
     /**
      * @return string
      */
-    public function getType(): string {
+    public function __toString()
+    {
+        return "{$this->getType()}={$this->getPermission()}";
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
         return $this->type;
     }
 
     /**
      * @param string $type
      */
-    public function setType(string $type): void {
+    public function setType(string $type): void
+    {
         $this->type = $type;
     }
 
     /**
      * @return string
      */
-    public function getPermission(): string {
+    public function getPermission(): string
+    {
         return $this->permission ?? '';
     }
 
     /**
      * @param string $permission
      */
-    public function setPermission(string $permission): void {
+    public function setPermission(string $permission): void
+    {
         $this->permission = $permission;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString() {
-        return "{$this->getType()}={$this->getPermission()}";
     }
 
     /**
      * @return array
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             self::KEY_TYPE => $this->getType(),
             self::KEY_PERM => $this->getPermission(),

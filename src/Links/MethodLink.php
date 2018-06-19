@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface MethodLink
  * @package MyENA\RGW\Link
  */
-interface MethodLink {
+interface MethodLink
+{
     /**
      * @return string
      */

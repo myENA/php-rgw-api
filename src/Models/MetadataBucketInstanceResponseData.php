@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -23,7 +25,8 @@ use MyENA\RGW\AbstractModel;
  * Class MetadataBucketInstanceResponseData
  * @package MyENA\RGW\Models
  */
-class MetadataBucketInstanceResponseData extends AbstractModel {
+class MetadataBucketInstanceResponseData extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\MetadataBucketInstanceInfo */
     protected $bucketInfo = null;
 
@@ -34,7 +37,8 @@ class MetadataBucketInstanceResponseData extends AbstractModel {
      * MetadataBucketInstanceData constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->bucketInfo)) {
             $this->bucketInfo = new MetadataBucketInstanceInfo($this->bucketInfo);
@@ -49,14 +53,16 @@ class MetadataBucketInstanceResponseData extends AbstractModel {
     /**
      * @return \MyENA\RGW\Models\MetadataBucketInstanceInfo
      */
-    public function getBucketInfo(): ?MetadataBucketInstanceInfo {
+    public function getBucketInfo(): ?MetadataBucketInstanceInfo
+    {
         return $this->bucketInfo;
     }
 
     /**
      * @return \MyENA\RGW\Models\MetadataAttribute[]
      */
-    public function getAttrs(): array {
+    public function getAttrs(): array
+    {
         return $this->attrs;
     }
 }

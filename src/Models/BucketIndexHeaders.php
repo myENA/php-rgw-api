@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -23,7 +25,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketIndexHeaders
  * @package MyENA\RGW\Models
  */
-class BucketIndexHeaders extends AbstractModel {
+class BucketIndexHeaders extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\BucketIndexUsage */
     protected $existingHeader = null;
     /** @var \MyENA\RGW\Models\BucketIndexUsage */
@@ -33,7 +36,8 @@ class BucketIndexHeaders extends AbstractModel {
      * BucketIndexHeaders constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->existingHeader)) {
             $this->existingHeader = new BucketIndexUsage($this->existingHeader);
@@ -46,14 +50,16 @@ class BucketIndexHeaders extends AbstractModel {
     /**
      * @return \MyENA\RGW\Models\BucketIndexUsage
      */
-    public function getExistingHeader(): BucketIndexUsage {
+    public function getExistingHeader(): BucketIndexUsage
+    {
         return $this->existingHeader;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketIndexUsage
      */
-    public function getCalculatedHeader(): BucketIndexUsage {
+    public function getCalculatedHeader(): BucketIndexUsage
+    {
         return $this->calculatedHeader;
     }
 }

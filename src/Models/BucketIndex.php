@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 use MyENA\RGW\Error\ResponseError;
@@ -26,7 +28,8 @@ use function MyENA\RGW\decodeMultiBody;
  * Class BucketIndex
  * @package MyENA\RGW\Models
  */
-class BucketIndex extends AbstractModel {
+class BucketIndex extends AbstractModel
+{
     /** @var array */
     protected $newObjects = [];
     /** @var \MyENA\RGW\Models\BucketIndexHeaders */
@@ -36,7 +39,8 @@ class BucketIndex extends AbstractModel {
      * BucketIndex constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->headers)) {
             $this->headers = new BucketIndexHeaders($this->headers);
@@ -50,7 +54,8 @@ class BucketIndex extends AbstractModel {
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public static function fromPSR7Response(ResponseInterface $response): array {
+    public static function fromPSR7Response(ResponseInterface $response): array
+    {
         [$parts, $err] = decodeMultiBody($response, true);
         if (null !== $err) {
             return [null, $err];
@@ -73,14 +78,16 @@ class BucketIndex extends AbstractModel {
     /**
      * @return array
      */
-    public function getNewObjects(): array {
+    public function getNewObjects(): array
+    {
         return $this->newObjects;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketIndexHeaders
      */
-    public function getHeaders(): ?BucketIndexHeaders {
+    public function getHeaders(): ?BucketIndexHeaders
+    {
         return $this->headers;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -6,16 +8,26 @@ use Psr\Http\Message\ResponseInterface;
  * Class AbstractModel
  * @package MyENA\RGW
  */
-abstract class AbstractModel implements \JsonSerializable {
+abstract class AbstractModel implements \JsonSerializable
+{
     /**
      * AbstractModel constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         $d = $this->_getKeyDelimiter();
         foreach ($data as $k => $v) {
             $this->{sanitizeName($k, $d, true)} = $v;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function _getKeyDelimiter(): string
+    {
+        return '_';
     }
 
     /**
@@ -25,7 +37,8 @@ abstract class AbstractModel implements \JsonSerializable {
      * @type \MyENA\RGW\Error Error description, if encountered
      * )
      */
-    public static function fromPSR7Response(ResponseInterface $response): array {
+    public static function fromPSR7Response(ResponseInterface $response): array
+    {
         [$decoded, $err] = decodeBody($response, true);
         if (null !== $err) {
             return [null, $err];
@@ -39,16 +52,10 @@ abstract class AbstractModel implements \JsonSerializable {
     }
 
     /**
-     * @return string
-     */
-    public function _getKeyDelimiter(): string {
-        return '_';
-    }
-
-    /**
      * @return array
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $a = [];
         $d = $this->_getKeyDelimiter();
         foreach (get_object_vars($this) as $k => $v) {

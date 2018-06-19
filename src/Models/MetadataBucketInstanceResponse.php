@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 /**
  * @SWG\Definition(
@@ -17,7 +19,8 @@
  * Class MetadataBucketInstanceResponse
  * @package MyENA\RGW\Models
  */
-class MetadataBucketInstanceResponse extends AbstractMetadataResponse {
+class MetadataBucketInstanceResponse extends AbstractMetadataResponse
+{
     /** @var \MyENA\RGW\Models\MetadataBucketInstanceResponseData */
     protected $data = null;
 
@@ -25,7 +28,8 @@ class MetadataBucketInstanceResponse extends AbstractMetadataResponse {
      * MetadataBucketInstance constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->data)) {
             $this->data = new MetadataBucketInstanceResponseData($this->data);
@@ -35,7 +39,8 @@ class MetadataBucketInstanceResponse extends AbstractMetadataResponse {
     /**
      * @return \MyENA\RGW\Models\MetadataBucketInstanceResponseData
      */
-    public function getData(): ?MetadataBucketInstanceResponseData {
+    public function getData(): ?MetadataBucketInstanceResponseData
+    {
         return $this->data;
     }
 }

@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface HeaderLink
  * @package MyENA\RGW\Link
  */
-interface HeaderLink {
+interface HeaderLink
+{
     /**
      * Must return an array of ["header" => "value"] or ["header" => ["value1", "value2"]]
      *

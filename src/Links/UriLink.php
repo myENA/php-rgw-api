@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface UriLink
  * @package MyENA\RGW\Link
  */
-interface UriLink {
+interface UriLink
+{
     /**
      * @return string
      */

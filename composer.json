@@ -17,7 +17,8 @@
   },
   "require-dev": {
     "myena/default-logger": "@stable",
-    "zircote/swagger-php": "@stable"
+    "zircote/swagger-php": "@stable",
+    "phpunit/phpunit": "7.2.*"
   },
   "autoload": {
     "psr-4": {
@@ -26,6 +27,17 @@
     "files": [
       "files/constants.php",
       "files/funcs.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MyENA\\RGW\\": "src/",
+      "MyENA\\RGW\\Tests\\": "tests/"
+    },
+    "files": [
+      "files/constants.php",
+      "files/funcs.php",
+      "tests/constants.php"
     ]
   },
   "suggest": {

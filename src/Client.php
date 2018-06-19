@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW;
 
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Request as PSR7Request;
@@ -6,63 +8,80 @@ use GuzzleHttp\Psr7\Uri as PSR7Uri;
 use GuzzleHttp\RequestOptions;
 use MyENA\RGW\Error\ApiError;
 use MyENA\RGW\Error\TransportError;
+use MyENA\RGW\Signature\V2Signature;
 use Psr\Http\Message\RequestInterface;
 
 /**
  * Class Client
+ *
  * @package MyENA\RGW
  */
-class Client {
-    /** @var \MyENA\RGW\Config */
-    private $config;
-    /** @var \MyENA\RGW\Signature */
-    private $signer;
-
-    /** @var string */
-    private $address;
-
+class Client
+{
     /** @var array */
     private static $requestOptions = [
         RequestOptions::HTTP_ERRORS     => false,
         RequestOptions::DECODE_CONTENT  => false,
         RequestOptions::ALLOW_REDIRECTS => true,
     ];
+    /** @var \MyENA\RGW\Config */
+    private $config;
+    /** @var \MyENA\RGW\Signature */
+    private $signer;
+    /** @var string */
+    private $address;
 
     /**
      * Client constructor.
-     * @param \MyENA\RGW\Config    $config
+     *
+     * @param \MyENA\RGW\Config $config
      * @param \MyENA\RGW\Signature $signer
      */
-    public function __construct(Config $config, Signature $signer) {
+    public function __construct(Config $config, Signature $signer)
+    {
         $this->config = $config;
         $this->signer = $signer;
     }
 
     /**
+     * Returns a client built with environment config values and the v2 signer
+     *
+     * @return \MyENA\RGW\Client
+     */
+    public static function defaultClient(): Client
+    {
+        return new static(Config::defaultConfig(), new V2Signature());
+    }
+
+    /**
      * @return \MyENA\RGW\Config
      */
-    public function getConfig(): Config {
+    public function getConfig(): Config
+    {
         return $this->config;
     }
 
     /**
      * @return \MyENA\RGW\Chain\BucketRootLink
      */
-    public function Bucket(): Chain\BucketRootLink {
+    public function Bucket(): Chain\BucketRootLink
+    {
         return Chain\BucketRootLink::new(null, [], $this, $this->config->getLogger());
     }
 
     /**
      * @return \MyENA\RGW\Chain\MetadataRootLink
      */
-    public function Metadata(): Chain\MetadataRootLink {
+    public function Metadata(): Chain\MetadataRootLink
+    {
         return Chain\MetadataRootLink::new(null, [], $this, $this->config->getLogger());
     }
 
     /**
      * @return \MyENA\RGW\Chain\UserRootLink
      */
-    public function User(): Chain\UserRootLink {
+    public function User(): Chain\UserRootLink
+    {
         return Chain\UserRootLink::new(null, [], $this, $this->config->getLogger());
     }
 
@@ -73,7 +92,8 @@ class Client {
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public function do(Request $request): array {
+    public function do(Request $request): array
+    {
         $psrRequest = $this->compilePSR7($request);
         if (!$this->config->isSilent()) {
             $this->config->getLogger()->debug(
@@ -102,24 +122,11 @@ class Client {
     }
 
     /**
-     * @return string
-     */
-    private function serviceAddress(): string {
-        if (!isset($this->address)) {
-            $this->address = sprintf(
-                'https://%s/%s',
-                $this->config->getAddress(),
-                $this->config->getAdminPath()
-            );
-        }
-        return $this->address;
-    }
-
-    /**
      * @param \MyENA\RGW\Request $r
      * @return \Psr\Http\Message\RequestInterface
      */
-    private function compilePSR7(Request $r): RequestInterface {
+    private function compilePSR7(Request $r): RequestInterface
+    {
         $uri = new PSR7Uri("{$this->serviceAddress()}{$r->uri()}");
         if (0 < (count($r->parameters()))) {
             $params = [];
@@ -137,5 +144,20 @@ class Client {
             $psrRequest = $this->signer->sign($this->config, $psrRequest);
         }
         return $psrRequest;
+    }
+
+    /**
+     * @return string
+     */
+    private function serviceAddress(): string
+    {
+        if (!isset($this->address)) {
+            $this->address = sprintf(
+                'https://%s/%s',
+                $this->config->getAddress(),
+                $this->config->getAdminPath()
+            );
+        }
+        return $this->address;
     }
 }

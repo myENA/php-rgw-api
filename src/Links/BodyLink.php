@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface BodyLink
  * @package MyENA\RGW\Link
  */
-interface BodyLink extends HeaderLink {
+interface BodyLink extends HeaderLink
+{
 
     // Extending header, as you should probably set the Content-Type in there.
 

@@ -1,18 +1,25 @@
-<?php namespace MyENA\RGW\Validator;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Validator;
 
 use MyENA\RGW\Validator;
 
 /**
+ * TODO: Currently does not support scientific notation
+ *
  * Class IntegerValidator
  * @package MyENA\RGW\Validator
  */
-class IntegerValidator implements Validator {
-    const NAME = 'integer';
+class IntegerValidator implements Validator
+{
+    const NAME    = 'integer';
+    const EXPECTS = 'integer or string containing only numbers with optional sign prefix';
 
     /**
      * @return string
      */
-    public function name(): string {
+    public function name(): string
+    {
         return self::NAME;
     }
 
@@ -20,16 +27,25 @@ class IntegerValidator implements Validator {
      * @param mixed $value
      * @return bool
      */
-    public function test($value): bool {
+    public function test($value): bool
+    {
         if (null === $value) {
             return false;
-        } else if (is_int($value)) {
+        } elseif (is_int($value)) {
             return true;
-        } else if (!is_string($value)) {
+        } elseif (!is_string($value)) {
             return false;
-        } else if ('-' === $value[0] || '+' === $value[0]) {
+        } elseif ('-' === $value[0] || '+' === $value[0]) {
             return ctype_digit(substr($value, 1));
         }
         return ctype_digit($value);
+    }
+
+    /**
+     * @return string
+     */
+    public function expectedStatement(): string
+    {
+        return self::EXPECTS;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Error;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Error;
 
 use Psr\Http\Message\ResponseInterface;
 
@@ -6,7 +8,8 @@ use Psr\Http\Message\ResponseInterface;
  * Class ApiError
  * @package MyENA\RGW\Error
  */
-class ApiError extends AbstractError {
+class ApiError extends AbstractError
+{
     /** @var string */
     private $errorCode = '';
     /** @var string */
@@ -16,11 +19,12 @@ class ApiError extends AbstractError {
 
     /**
      * ApiError constructor.
-     * @param int    $code
+     * @param int $code
      * @param string $reason
-     * @param array  $data
+     * @param array $data
      */
-    public function __construct(int $code, string $reason, array $data = []) {
+    public function __construct(int $code, string $reason, array $data = [])
+    {
         parent::__construct($code, $reason);
         $this->errorCode = $data['Code'] ?? '';
         $this->requestId = $data['RequestId'] ?? '';
@@ -31,7 +35,8 @@ class ApiError extends AbstractError {
      * @param \Psr\Http\Message\ResponseInterface $response
      * @return \MyENA\RGW\Error\ApiError
      */
-    public static function fromResponse(ResponseInterface $response): ApiError {
+    public static function fromResponse(ResponseInterface $response): ApiError
+    {
         $code = $response->getStatusCode();
         $reason = $response->getReasonPhrase();
         $data = [];
@@ -49,51 +54,34 @@ class ApiError extends AbstractError {
     }
 
     /**
-     * @return string
-     */
-    public function getErrorCode(): string {
-        return $this->errorCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRequestId(): string {
-        return $this->requestId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getHostId(): string {
-        return $this->hostId;
-    }
-
-    /**
      * @return bool
      */
-    public function isTransportError(): bool {
+    public function isTransportError(): bool
+    {
         return false;
     }
 
     /**
      * @return bool
      */
-    public function isApiError(): bool {
+    public function isApiError(): bool
+    {
         return true;
     }
 
     /**
      * @return bool
      */
-    public function isResponseError(): bool {
+    public function isResponseError(): bool
+    {
         return false;
     }
 
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return sprintf(
             'Status: %d %s; Code: %s, RequestId: %s; HostId: %s',
             $this->getCode(),
@@ -105,9 +93,34 @@ class ApiError extends AbstractError {
     }
 
     /**
+     * @return string
+     */
+    public function getErrorCode(): string
+    {
+        return $this->errorCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRequestId(): string
+    {
+        return $this->requestId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHostId(): string
+    {
+        return $this->hostId;
+    }
+
+    /**
      * @return array
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'code'   => $this->getCode(),
             'reason' => $this->getReason(),

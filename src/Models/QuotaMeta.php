@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -33,7 +35,8 @@ use MyENA\RGW\AbstractModel;
  * Class QuotaMeta
  * @package MyENA\RGW\Models
  */
-class QuotaMeta extends AbstractModel {
+class QuotaMeta extends AbstractModel
+{
     /** @var bool */
     protected $enabled = false;
     /** @var int */
@@ -48,35 +51,40 @@ class QuotaMeta extends AbstractModel {
     /**
      * @return bool
      */
-    public function isEnabled(): bool {
+    public function isEnabled(): bool
+    {
         return $this->enabled;
     }
 
     /**
      * @return int
      */
-    public function getMaxSizeKb(): int {
+    public function getMaxSizeKb(): int
+    {
         return $this->maxSizeKb;
     }
 
     /**
      * @return int
      */
-    public function getMaxObjects(): int {
+    public function getMaxObjects(): int
+    {
         return $this->maxObjects;
     }
 
     /**
      * @return bool
      */
-    public function isCheckOnRaw(): bool {
+    public function isCheckOnRaw(): bool
+    {
         return $this->checkOnRaw;
     }
 
     /**
      * @return int
      */
-    public function getMaxSize(): int {
+    public function getMaxSize(): int
+    {
         return $this->maxSize;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -23,7 +25,8 @@ use MyENA\RGW\AbstractModel;
  * Class Quotas
  * @package MyENA\RGW\Models
  */
-class Quotas extends AbstractModel {
+class Quotas extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\QuotaMeta */
     protected $bucketQuota = null;
     /** @var \MyENA\RGW\Models\QuotaMeta */
@@ -33,7 +36,8 @@ class Quotas extends AbstractModel {
      * Quotas constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         if (is_array($this->bucketQuota)) {
             $this->bucketQuota = new QuotaMeta($this->bucketQuota);
@@ -46,14 +50,16 @@ class Quotas extends AbstractModel {
     /**
      * @return \MyENA\RGW\Models\QuotaMeta
      */
-    public function getBucketQuota(): ?QuotaMeta {
+    public function getBucketQuota(): ?QuotaMeta
+    {
         return $this->bucketQuota;
     }
 
     /**
      * @return \MyENA\RGW\Models\QuotaMeta
      */
-    public function getUserQuota(): ?QuotaMeta {
+    public function getUserQuota(): ?QuotaMeta
+    {
         return $this->userQuota;
     }
 }

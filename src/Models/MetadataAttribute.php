@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -21,7 +23,8 @@ use MyENA\RGW\AbstractModel;
  * Class MetadataAttribute
  * @package MyENA\RGW\Models
  */
-class MetadataAttribute extends AbstractModel {
+class MetadataAttribute extends AbstractModel
+{
     /** @var string */
     protected $key = '';
     /** @var string */
@@ -30,14 +33,16 @@ class MetadataAttribute extends AbstractModel {
     /**
      * @return string
      */
-    public function getKey(): string {
+    public function getKey(): string
+    {
         return $this->key;
     }
 
     /**
      * @return string
      */
-    public function getVal(): string {
+    public function getVal(): string
+    {
         return $this->val;
     }
 }

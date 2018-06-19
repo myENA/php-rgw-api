@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Chain\Bucket\Delete;
@@ -16,20 +18,23 @@ use MyENA\RGW\Links\UriLink;
  * Class BucketRootLink
  * @package MyENA\RGW\Chain
  */
-class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
+class BucketRootLink extends AbstractLink implements UriLink, HeaderLink
+{
     const PATH = '/bucket';
 
     /**
      * @return string
      */
-    public function getUriPart(): string {
+    public function getUriPart(): string
+    {
         return self::PATH;
     }
 
     /**
      * @return array
      */
-    public function getRequestHeaders(): array {
+    public function getRequestHeaders(): array
+    {
         return RGW_DEFAULT_REQUEST_HEADERS;
     }
 
@@ -37,7 +42,8 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param null|string $uid
      * @return \MyENA\RGW\Chain\Bucket\ListBuckets
      */
-    public function List(?string $uid = null): ListBuckets {
+    public function List(?string $uid = null): ListBuckets
+    {
         return ListBuckets::new($this, [ListBuckets::PARAM_UID => $uid]);
     }
 
@@ -45,17 +51,19 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param string $uid
      * @return \MyENA\RGW\Chain\Bucket\Info
      */
-    public function Info(string $uid): Info {
+    public function Info(string $uid): Info
+    {
         return Info::new($this, [Info::PARAM_UID => $uid]);
     }
 
     /**
-     * @param string    $bucket
+     * @param string $bucket
      * @param bool|null $checkObjects
      * @param bool|null $fix
      * @return \MyENA\RGW\Chain\Bucket\Index
      */
-    public function Index(string $bucket, ?bool $checkObjects = null, ?bool $fix = null): Index {
+    public function Index(string $bucket, ?bool $checkObjects = null, ?bool $fix = null): Index
+    {
         return Index::new(
             $this,
             [
@@ -71,7 +79,8 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param string $bucket
      * @return \MyENA\RGW\Chain\Bucket\Link
      */
-    public function Link(string $uid, string $bucket): Link {
+    public function Link(string $uid, string $bucket): Link
+    {
         return Link::new($this, [Link::PARAM_UID => $uid, Link::PARAM_BUCKET => $bucket]);
     }
 
@@ -80,7 +89,8 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param string $bucket
      * @return \MyENA\RGW\Chain\Bucket\Unlink
      */
-    public function Unlink(string $uid, string $bucket): Unlink {
+    public function Unlink(string $uid, string $bucket): Unlink
+    {
         return Unlink::new($this, [Unlink::PARAM_UID => $uid, Unlink::PARAM_BUCKET => $bucket]);
     }
 
@@ -89,16 +99,18 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param string $bucket
      * @return \MyENA\RGW\Chain\Bucket\Policy
      */
-    public function Policy(string $uid, string $bucket): Policy {
+    public function Policy(string $uid, string $bucket): Policy
+    {
         return Policy::new($this, [Policy::PARAM_UID => $uid, Policy::PARAM_BUCKET => $bucket]);
     }
 
     /**
      * @param string $bucket
-     * @param bool   $purgeObjects
+     * @param bool $purgeObjects
      * @return \MyENA\RGW\Chain\Bucket\Delete
      */
-    public function Delete(string $bucket, bool $purgeObjects = false): Delete {
+    public function Delete(string $bucket, bool $purgeObjects = false): Delete
+    {
         return Delete::new(
             $this,
             [
@@ -113,7 +125,8 @@ class BucketRootLink extends AbstractLink implements UriLink, HeaderLink {
      * @param string $object
      * @return \MyENA\RGW\Chain\Bucket\DeleteObject
      */
-    public function DeleteObject(string $bucket, string $object): DeleteObject {
+    public function DeleteObject(string $bucket, string $object): DeleteObject
+    {
         return DeleteObject::new($this, [DeleteObject::PARAM_BUCKET => $bucket, DeleteObject::PARAM_OBJECT => $object]);
     }
 }

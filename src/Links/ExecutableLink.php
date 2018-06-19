@@ -1,10 +1,13 @@
-<?php namespace MyENA\RGW\Links;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Links;
 
 /**
  * Interface Executable
  * @package MyENA\RGW
  */
-interface ExecutableLink {
+interface ExecutableLink
+{
     /**
      * @return array(
      * @type mixed|null              Value will vary depending on call being made

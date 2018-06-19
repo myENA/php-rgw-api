@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -21,7 +23,8 @@ use MyENA\RGW\AbstractModel;
  * Class SwiftKey
  * @package MyENA\RGW\Models
  */
-class SwiftKey extends AbstractModel {
+class SwiftKey extends AbstractModel
+{
     /** @var string */
     protected $user = '';
     /** @var string */
@@ -30,14 +33,16 @@ class SwiftKey extends AbstractModel {
     /**
      * @return string
      */
-    public function getUser(): string {
+    public function getUser(): string
+    {
         return $this->user;
     }
 
     /**
      * @return string
      */
-    public function getSecretKey(): string {
+    public function getSecretKey(): string
+    {
         return $this->secretKey;
     }
 }

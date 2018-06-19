@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Parameter;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Parameter;
 
 use MyENA\RGW\AbstractParameter;
 use MyENA\RGW\Parameter;
@@ -8,36 +10,11 @@ use function MyENA\RGW\encodeValue;
  * Class SingleParameter
  * @package MyENA\RGW\Request
  */
-class SingleParameter extends AbstractParameter {
+class SingleParameter extends AbstractParameter
+{
 
     /** @var mixed */
     protected $value;
-
-    /**
-     * @param $value
-     * @return static
-     */
-    public function setValue($value): Parameter {
-        if (isset($this->value) && $this->value !== $value) {
-            unset($this->failedValidator);
-        }
-        if (is_object($value)) {
-            $this->value = clone $value;
-        } else {
-            $this->value = $value;
-        }
-        return $this;
-    }
-
-    /**
-     * Will attempt to return a usable value for this parameter preferring a specified one, falling back to
-     * default (if set), and finally null
-     *
-     * @return mixed|null
-     */
-    public function getValue() {
-        return $this->value ?? $this->getDefaultValue();
-    }
 
     /**
      * Perform validation of this parameter against stored validators.
@@ -46,7 +23,8 @@ class SingleParameter extends AbstractParameter {
      *
      * @return bool
      */
-    public function isValid(): bool {
+    public function isValid(): bool
+    {
         unset($this->failedValidator);
         $value = $this->getValue();
         if (!$this->isRequired() && null === $value) {
@@ -62,9 +40,38 @@ class SingleParameter extends AbstractParameter {
     }
 
     /**
+     * Will attempt to return a usable value for this parameter preferring a specified one, falling back to
+     * default (if set), and finally null
+     *
+     * @return mixed|null
+     */
+    public function getValue()
+    {
+        return $this->value ?? $this->getDefaultValue();
+    }
+
+    /**
+     * @param $value
+     * @return static
+     */
+    public function setValue($value): Parameter
+    {
+        if (isset($this->value) && $this->value !== $value) {
+            unset($this->failedValidator);
+        }
+        if (is_object($value)) {
+            $this->value = clone $value;
+        } else {
+            $this->value = $value;
+        }
+        return $this;
+    }
+
+    /**
      * @return string
      */
-    public function getEncodedValue(): ?string {
+    public function getEncodedValue(): ?string
+    {
         if (null !== ($v = $this->getValue())) {
             return encodeValue($v);
         }

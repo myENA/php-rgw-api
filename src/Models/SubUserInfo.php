@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -21,7 +23,8 @@ use MyENA\RGW\AbstractModel;
  * Class SubUserInfo
  * @package MyENA\RGW\Models
  */
-class SubUserInfo extends AbstractModel {
+class SubUserInfo extends AbstractModel
+{
     /** @var string */
     protected $id = '';
     /** @var string */
@@ -30,35 +33,40 @@ class SubUserInfo extends AbstractModel {
     /**
      * @return string
      */
-    public function getId(): string {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId(string $id): void {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPermissions(): string {
+    public function getPermissions(): string
+    {
         return $this->permissions;
     }
 
     /**
      * @param string $permissions
      */
-    public function setPermissions(string $permissions): void {
+    public function setPermissions(string $permissions): void
+    {
         $this->permissions = $permissions;
     }
 
     /**
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getId();
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
     }
 }

@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -28,7 +30,8 @@ use MyENA\RGW\AbstractModel;
  * Class BucketPolicyACL
  * @package MyENA\RGW\Models
  */
-class BucketPolicyACL extends AbstractModel {
+class BucketPolicyACL extends AbstractModel
+{
     /** @var \MyENA\RGW\Models\BucketPolicyACLGroupMap[] */
     protected $aclGroupMap = [];
     /** @var \MyENA\RGW\Models\BucketPolicyACLUserMap[] */
@@ -40,7 +43,8 @@ class BucketPolicyACL extends AbstractModel {
      * BucketPolicyACL constructor.
      * @param array $data
      */
-    public function __construct(array $data = []) {
+    public function __construct(array $data = [])
+    {
         parent::__construct($data);
         foreach ($this->aclGroupMap as &$aclGroupMap) {
             $aclGroupMap = new BucketPolicyACLGroupMap($aclGroupMap);
@@ -56,21 +60,24 @@ class BucketPolicyACL extends AbstractModel {
     /**
      * @return \MyENA\RGW\Models\BucketPolicyACLGroupMap[]
      */
-    public function getAclGroupMap(): array {
+    public function getAclGroupMap(): array
+    {
         return $this->aclGroupMap;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketPolicyACLUserMap[]
      */
-    public function getAclUserMap(): array {
+    public function getAclUserMap(): array
+    {
         return $this->aclUserMap;
     }
 
     /**
      * @return \MyENA\RGW\Models\BucketPolicyACLGrantMap[]
      */
-    public function getGrantMap(): array {
+    public function getGrantMap(): array
+    {
         return $this->grantMap;
     }
 }

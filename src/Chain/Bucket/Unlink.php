@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\Bucket;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\Bucket;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Links\ExecutableLink;
@@ -12,7 +14,8 @@ use MyENA\RGW\Validators;
  * Class Unlink
  * @package MyENA\RGW\Chain\Bucket
  */
-class Unlink extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink {
+class Unlink extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
+{
     const METHOD = 'PUT';
 
     const PARAM_UID    = 'uid';
@@ -24,21 +27,23 @@ class Unlink extends AbstractLink implements MethodLink, ParameterLink, Executab
     /**
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return self::METHOD;
     }
 
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 (new SingleParameter(self::PARAM_UID, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::String()),
                 (new SingleParameter(self::PARAM_BUCKET, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::BucketName()),
             ];
         }
@@ -51,7 +56,8 @@ class Unlink extends AbstractLink implements MethodLink, ParameterLink, Executab
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public function execute(): array {
+    public function execute(): array
+    {
         /** @var \Psr\Http\Message\ResponseInterface $resp */
         /** @var \MyENA\RGW\Error $err */
         [$_, $err] = $this->client->do($this->buildRequest());

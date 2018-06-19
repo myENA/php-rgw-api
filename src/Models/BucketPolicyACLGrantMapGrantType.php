@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Models;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 
@@ -17,14 +19,16 @@ use MyENA\RGW\AbstractModel;
  * Class BucketPolicyACLGrantMapGrantType
  * @package MyENA\RGW\Models
  */
-class BucketPolicyACLGrantMapGrantType extends AbstractModel {
+class BucketPolicyACLGrantMapGrantType extends AbstractModel
+{
     /** @var int */
     protected $type = 0;
 
     /**
      * @return int
      */
-    public function getType(): int {
+    public function getType(): int
+    {
         return $this->type;
     }
 }

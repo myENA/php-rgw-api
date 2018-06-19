@@ -1,4 +1,6 @@
-<?php namespace MyENA\RGW\Chain\User\Capabilities;
+<?php declare(strict_types=1);
+
+namespace MyENA\RGW\Chain\User\Capabilities;
 
 use MyENA\RGW\AbstractLink;
 use MyENA\RGW\Links\ExecutableLink;
@@ -13,7 +15,8 @@ use MyENA\RGW\Validators;
  * Class Add
  * @package MyENA\RGW\Chain\User\Capabilities
  */
-class Add extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink {
+class Add extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
+{
     const METHOD = 'PUT';
 
     const PARAM_USER_CAPABILITIES = 'user-caps';
@@ -24,18 +27,20 @@ class Add extends AbstractLink implements MethodLink, ParameterLink, ExecutableL
     /**
      * @return string
      */
-    public function getRequestMethod(): string {
+    public function getRequestMethod(): string
+    {
         return self::METHOD;
     }
 
     /**
      * @return \MyENA\RGW\Parameter[]
      */
-    public function getParameters(): array {
+    public function getParameters(): array
+    {
         if (!isset($this->parameters)) {
             $this->parameters = [
                 (new ArrayParameter(self::PARAM_USER_CAPABILITIES, Parameter::IN_QUERY))
-                    ->required()
+                    ->requireValue()
                     ->addValidator(Validators::UserCapability()),
             ];
         }
@@ -48,7 +53,8 @@ class Add extends AbstractLink implements MethodLink, ParameterLink, ExecutableL
      * @type \MyENA\RGW\Error|null
      * )
      */
-    public function execute(): array {
+    public function execute(): array
+    {
         /** @var \Psr\Http\Message\ResponseInterface $resp */
         /** @var \MyENA\RGW\Error $err */
         [$resp, $err] = $this->client->do($this->buildRequest());
