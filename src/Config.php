@@ -91,6 +91,7 @@ class Config implements LoggerAwareInterface
 
     /**
      * @param \GuzzleHttp\Client|null $client
+     * @param null|\Psr\Log\LoggerInterface $logger
      * @return \MyENA\RGW\Config
      */
     public static function defaultConfig(?GuzzleClient $client = null, ?LoggerInterface $logger = null): Config
