@@ -18,12 +18,14 @@ use Psr\Http\Message\RequestInterface;
  */
 class Client
 {
-    /** @var array */
-    private static $requestOptions = [
+    private const HTTP_BAD_REQUEST = 400;
+
+    private const REQUEST_OPTIONS = [
         RequestOptions::HTTP_ERRORS     => false,
         RequestOptions::DECODE_CONTENT  => false,
         RequestOptions::ALLOW_REDIRECTS => true,
     ];
+
     /** @var \MyENA\RGW\Config */
     private $config;
     /** @var \MyENA\RGW\Signature */
@@ -102,7 +104,7 @@ class Client
         }
 
         try {
-            $resp = $this->config->getHttpClient()->send($psrRequest, self::$requestOptions);
+            $resp = $this->config->getHttpClient()->send($psrRequest, self::REQUEST_OPTIONS);
         } catch (GuzzleException $e) {
             if (!$this->config->isSilent()) {
                 $this->config->getLogger()->error("Query returned {$e->getCode()}: {$e->getMessage()}");
@@ -114,7 +116,7 @@ class Client
             $this->config->getLogger()->debug("Query returned {$resp->getStatusCode()}: {$resp->getReasonPhrase()}");
         }
 
-        if (400 <= $resp->getStatusCode()) {
+        if (self::HTTP_BAD_REQUEST <= $resp->getStatusCode()) {
             return [null, ApiError::fromResponse($resp)];
         }
 
