@@ -13,7 +13,7 @@
     "php": ">=7.1",
     "guzzlehttp/guzzle": "6.3.*",
     "psr/log": "1.*",
-    "dcarbone/gohttp": "0.1.*"
+    "dcarbone/gohttp": "0.2.*"
   },
   "require-dev": {
     "myena/default-logger": "@stable",
