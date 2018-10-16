@@ -15,8 +15,8 @@
     "psr/log": "1.*"
   },
   "require-dev": {
-    "myena/default-logger": "@stable",
-    "zircote/swagger-php": "@stable",
+    "myena/default-logger": "1.1.*",
+    "zircote/swagger-php": "2.*",
     "phpunit/phpunit": "7.2.*"
   },
   "autoload": {
