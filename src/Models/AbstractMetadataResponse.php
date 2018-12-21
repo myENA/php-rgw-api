@@ -5,21 +5,27 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataResponse",
+ * @OA\Schema(
+ *     schema="RGWMetadataResponse",
  *     type="object",
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="key",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="mtime",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="ver",
- *          type="object",
- *          ref="#/definitions/RGWMetadataVersion"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWMetadataVersion"
  *     )
  * )
  */

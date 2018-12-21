@@ -8,18 +8,24 @@ use Psr\Http\Message\ResponseInterface;
 use function MyENA\RGW\decodeMultiBody;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketIndex",
- *     type="object",
- *     @SWG\Property(
- *          property="new_objects",
- *          type="array",
- *          @SWG\Items(type="string")
+ * @OA\Schema(
+ *     schema="RGWBucketIndex",
+ *     @OA\Schema(
+ *          type="object"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
+ *          property="new_objects",
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(type="string")
+ *          )
+ *     ),
+ *     @OA\Property(
  *          property="headers",
- *          type="object",
- *          ref="#/definitions/RGWBucketIndexHeaders"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketIndexHeaders"
  *     )
  * )
  */

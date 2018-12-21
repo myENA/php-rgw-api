@@ -5,18 +5,24 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataBucketInstanceResponseData",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWMetadataBucketInstanceResponseData",
+ *     @OA\Schema(
+ *          type="object"
+ *      ),
+ *     @OA\Property(
  *          property="bucket_info",
- *          type="object",
- *          ref="#/definitions/RGWMetadataBucketInstanceInfo"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWMetadataBucketInstanceInfo"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="attrs",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWMetadataAttribute")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
+ *          )
  *     )
  * )
  */

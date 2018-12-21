@@ -14,6 +14,9 @@
         <testsuite name="user-crud">
             <file>./tests/Chain/User/UserCRUDTest.php</file>
         </testsuite>
+        <testsuite name="swagger-annotation">
+            <file>./tests/OpenApiTest.php</file>
+        </testsuite>
     </testsuites>
 
     <filter>

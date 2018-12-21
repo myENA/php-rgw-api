@@ -5,12 +5,16 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketPolicyACLGrantMapGrantType",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketPolicyACLGrantMapGrantType",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="type",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     )
  * )
  */

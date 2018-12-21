@@ -3,14 +3,18 @@
 namespace MyENA\RGW\Models;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataBucketInstanceResponse",
- *     type="object",
+ * @OA\Schema(
+ *     schema="RGWMetadataBucketInstanceResponse",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
  *     ref="$/definitions/RGWMetadataResponse",
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="data",
- *          type="object",
- *          ref="#/definitions/RGWMetadataBucketInstanceResponseData"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWMetadataBucketInstanceResponseData"
  *     )
  * )
  */

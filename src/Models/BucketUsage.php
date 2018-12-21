@@ -5,28 +5,38 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketUsage",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketUsage",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="rgw_none",
- *          type="object",
- *          ref="#/definitions/RGWStatisticsEntry"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="rgw_main",
- *          type="object",
- *          ref="#/definitions/RGWStatisticsEntry"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="rgw_shadow",
- *          type="object",
- *          ref="#/definitions/RGWStatisticsEntry"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="rgw_multimedia",
- *          type="object",
- *          ref="#/definitions/RGWStatisticsEntry"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     )
  * )
  */

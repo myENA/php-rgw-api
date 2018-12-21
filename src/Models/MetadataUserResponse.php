@@ -3,14 +3,18 @@
 namespace MyENA\RGW\Models;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataUserResponse",
- *     type="object",
+ * @OA\Schema(
+ *     schema="RGWMetadataUserResponse",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
  *     ref="$/definitions/RGWMetadataResponse",
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="data",
- *          type="object",
- *          ref="#/definitions/RGWMetadataUserInfo"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWMetadataUserInfo"
  *     )
  * )
  */

@@ -5,18 +5,24 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketIndexHeaders",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketIndexHeaders",
+ *     @OA\Schema(
+ *          type="object"
+ *      ),
+ *     @OA\Property(
  *          property="existing_header",
- *          type="object",
- *          ref="#/definitions/RGWBucketIndexUsage"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="calculated_header",
- *          type="object",
- *          ref="#/definitions/RGWBucketIndexUsage"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     )
  * )
  */

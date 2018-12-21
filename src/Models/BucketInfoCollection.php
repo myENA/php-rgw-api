@@ -5,10 +5,12 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModelCollection;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketInfoCollection",
- *     type="array",
- *     @SWG\Items(ref="#/definitions/RGWBucketInfo")
+ * @OA\Schema(
+ *     schema="RGWBucketInfoCollection",
+ *     @OA\Schema(
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWBucketInfo")
+ *     )
  * )
  */
 

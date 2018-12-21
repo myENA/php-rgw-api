@@ -5,10 +5,12 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModelCollection;
 
 /**
- * @SWG\Definition(
- *     definition="RGWUserCapabilityCollection",
- *     type="array",
- *     @SWG\Items(ref="#/definitions/RGWUserCapability")
+ * @OA\Schema(
+ *     schema="RGWUserCapabilityCollection",
+ *     @OA\Schema(
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWUserCapability")
+ *     )
  * )
  */
 
