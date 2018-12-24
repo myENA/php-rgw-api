@@ -1,10 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * Created by PhpStorm.
- * User: P3701005
- * Date: 12/21/2018
- * Time: 10:22 AM
- */
 
 namespace MyENA\RGW\Tests;
 
@@ -33,14 +27,15 @@ class OpenApiTest extends TestCase
 /**
  * @OA\Info(
  *      version="1.0.0",
- *      title="Veem Parser",
- *      description="Veem Parser",
+ *      title="php-rgw-api",
+ *      description="php-rgw-api",
  *      @OA\Contact(
- *          email="andreil@mena.com"
+ *          email="andreil@ena.com",
+*           email="dcarbone@ena.com"
  *      ),
  *      @OA\License(
- *         name="Apache 2.0",
- *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *         name="Mozilla Public License 2.0",
+ *         url="https://www.mozilla.org/en-US/MPL/2.0/"
  *     )
  * )
  * @OA\PathItem(
@@ -52,7 +47,7 @@ PHP
             new Context(['filename' => '/src/boostrap'])
         ));
         $openapi = openapi_scan(__DIR__ . '/../src', ['analysis' => $analysis, 'analyser' => $analyser]);
-        
+
         $this->assertTrue(array_key_exists("\MyENA\RGW\AbstractParameter",$openapi->_analysis->classes));
         $this->assertTrue(array_key_exists("\MyENA\RGW\Chain\Bucket\Link",$openapi->_analysis->classes));
         $this->assertTrue(array_key_exists("\MyENA\RGW\Validator\BucketNameValidator",$openapi->_analysis->classes));
