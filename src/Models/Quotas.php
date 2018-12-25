@@ -5,18 +5,24 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWQuotas",
- *     type="object",
- *     @SWG\Property(
- *          property="bucket_quota",
- *          type="object",
- *          ref="#/definitions/RGWQuotaMeta"
+ * @OA\Schema(
+ *     schema="RGWQuotas",
+ *     @OA\Schema(
+ *          type="object"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
+ *          property="bucket_quota",
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWQuotaMeta"
+ *     ),
+ *     @OA\Property(
  *          property="user_quota",
- *          type="object",
- *          ref="#/definitions/RGWQuotaMeta"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     )
  * )
  */

@@ -5,13 +5,17 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketIndexUsage",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketIndexUsage",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="usage",
- *          type="object",
- *          ref="#/definitions/RGWBucketUsage"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketUsage"
  *     )
  * )
  */

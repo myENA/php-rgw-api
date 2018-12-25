@@ -5,28 +5,40 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWQuotaMeta",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWQuotaMeta",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="enabled",
- *          type="boolean"
+ *          @OA\Schema(
+ *              type="boolean"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="max_size_kb",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="max_objects",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="check_on_raw",
- *          type="boolean"
+ *          @OA\Schema(
+ *              type="boolean"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="max_size",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     )
  * )
  */

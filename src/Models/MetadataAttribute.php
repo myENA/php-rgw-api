@@ -5,16 +5,22 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataAttribute",
- *     type="object",
- *     @SWG\Property(
- *          property="key",
- *          type="string"
+ * @OA\Schema(
+ *     schema="RGWMetadataAttribute",
+ *     @OA\Schema(
+ *          type="object"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
+ *          property="key",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *     ),
+ *     @OA\Property(
  *          property="val",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     )
  * )
  */

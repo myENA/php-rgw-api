@@ -5,16 +5,22 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWSubUserInfo",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWSubUserInfo",
+ *     @OA\Schema(
+ *          type="object"
+ *      ),
+ *     @OA\Property(
  *          property="id",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="permissions",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     )
  * )
  */

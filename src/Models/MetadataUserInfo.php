@@ -3,50 +3,70 @@
 namespace MyENA\RGW\Models;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataUserInfo",
- *     type="object",
+ * @OA\Schema(
+ *     schema="RGWMetadataUserInfo",
+ *     @OA\Schema(
+ *          type="object"
+ *      ),
  *     ref="$/definitions/RGWUserInfo",
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="auid",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="op_mask",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="default_placement",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="placement_tags",
- *          type="array",
- *          @SWG\Items(type="string")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(type="string")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="bucket_quota",
- *          type="object",
- *          ref="#/definitions/RGWQuotaMeta"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="user_quota",
- *          type="object",
- *          ref="#/definitions/RGWQuotaMeta"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="temp_url_keys",
- *          type="array",
- *          @SWG\Items(type="string")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(type="string")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="type",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="attrs",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWMetadataAttribute")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
+ *          )
  *     )
  * )
  */

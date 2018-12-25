@@ -5,23 +5,31 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketPolicyACL",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketPolicyACL",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="acl_group_map",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLGroupMap")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLGroupMap")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="acl_user_map",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLUserMap")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLUserMap")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="grant_map",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWBucketPolicyACLGrantMap")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLGrantMap")
+ *          )
  *     )
  * )
  */

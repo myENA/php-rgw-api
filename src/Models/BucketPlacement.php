@@ -5,20 +5,28 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketPlacement",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketPlacement",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="data_pool",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="data_extra_pool",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="index_pool",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     )
  * )
  */

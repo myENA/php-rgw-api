@@ -5,57 +5,81 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWUserInfo",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWUserInfo",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="tenant",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="user_id",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="display_name",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="email",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="suspended",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="max_buckets",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="subusers",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWSubUserInfo")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="keys",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWUserKey")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWUserKey")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="swift_keys",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWSwiftKey")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWSwiftKey")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="caps",
- *          type="array",
- *          @SWG\Items(ref="#/definitions/RGWUserCapability")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(ref="#/components/schemas/RGWUserCapability")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="stats",
- *          type="object",
- *          ref="#/definitions/RGWStatisticsEntry"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     )
  * )
  */

@@ -5,83 +5,121 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWMetadataBucketInstanceInfo",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWMetadataBucketInstanceInfo",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="bucket",
- *          type="object",
- *          ref="#/definitions/RGWMetadataBucketInfo"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWMetadataBucketInfo"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="num_shards",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="placement_rule",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="swift_ver_location",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="flags",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="has_website",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="swift_versioning",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="owner",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="requester_pays",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="index_type",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="bi_shard_hash_type",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="has_instance_obj",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="creation_time",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="zonegroup",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="quota",
- *          type="object",
- *          ref="#/definitions/RGWQuotaMeta"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="mdsearch_config",
- *          type="array",
- *          @SWG\Items(type="string")
+ *          @OA\Schema(
+ *              type="array",
+ *              @OA\Items(type="string")
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="reshard_status",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="new_bucket_instance_id",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     )
  * )
  */

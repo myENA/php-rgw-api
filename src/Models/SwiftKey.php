@@ -5,16 +5,22 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWSwiftKey",
- *     type="object",
- *     @SWG\Property(
- *          property="user",
- *          type="string"
+ * @OA\Schema(
+ *     schema="RGWSwiftKey",
+ *     @OA\Schema(
+ *          type="object"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
+ *          property="user",
+ *          @OA\Schema(
+ *              type="string"
+ *          )
+ *     ),
+ *     @OA\Property(
  *          property="secret_key",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     )
  * )
  */

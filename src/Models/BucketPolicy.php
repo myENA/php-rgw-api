@@ -5,18 +5,24 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketPolicy",
- *     type="object",
- *     @SWG\Property(
- *          property="owner",
- *          type="object",
- *          ref="#/definitions/RGWBucketPolicyOwner"
+ * @OA\Schema(
+ *     schema="RGWBucketPolicy",
+ *     @OA\Schema(
+ *          type="object"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
+ *          property="owner",
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketPolicyOwner"
+ *     ),
+ *     @OA\Property(
  *          property="acl",
- *          type="object",
- *          ref="#/definitions/RGWBucketPolicyACL"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketPolicyACL"
  *     )
  * )
  */

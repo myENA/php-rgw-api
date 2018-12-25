@@ -5,38 +5,54 @@ namespace MyENA\RGW\Models;
 use MyENA\RGW\AbstractModel;
 
 /**
- * @SWG\Definition(
- *     definition="RGWBucketPolicyACLGrantMapGrant",
- *     type="object",
- *     @SWG\Property(
+ * @OA\Schema(
+ *     schema="RGWBucketPolicyACLGrantMapGrant",
+ *     @OA\Schema(
+ *          type="object"
+ *     ),
+ *     @OA\Property(
  *          property="name",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="permission",
- *          type="object",
- *          ref="#/definitions/RGWBucketPolicyACLGrantMapGrantPermission"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantPermission"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="type",
- *          type="object",
- *          ref="#/definitions/RGWBucketPolicyACLGrantMapGrantType"
+ *          @OA\Schema(
+ *              type="object"
+ *          ),
+ *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantType"
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="email",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="id",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="group",
- *          type="integer"
+ *          @OA\Schema(
+ *              type="integer"
+ *          )
  *     ),
- *     @SWG\Property(
+ *     @OA\Property(
  *          property="url_spec",
- *          type="string"
+ *          @OA\Schema(
+ *              type="string"
+ *          )
  *     )
  * )
  */
