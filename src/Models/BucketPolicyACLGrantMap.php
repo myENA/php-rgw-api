@@ -18,7 +18,9 @@ use MyENA\RGW\AbstractModel;
  *     ),
  *     @OA\Property(
  *          property="grant",
- *          type="RGWBucketPolicyACLGrantMapGrant"
+ *          @OA\Schema(
+ *              type="RGWBucketPolicyACLGrantMapGrant"
+ *          }
  *     )
  * )
  */
