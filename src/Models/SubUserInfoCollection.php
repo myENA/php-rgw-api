@@ -7,10 +7,8 @@ use MyENA\RGW\AbstractModelCollection;
 /**
  * @OA\Schema(
  *     schema="RGWSubUserInfoCollection",
- *     @OA\Schema(
- *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
- *     )
+ *     type="array",
+ *     @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
  * )
  */
 

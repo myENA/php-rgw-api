@@ -10,21 +10,15 @@ use MyENA\RGW\AbstractModel;
  *     type="object",
  *     @OA\Property(
  *          property="key",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="mtime",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="ver",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWMetadataVersion"
  *     )
  * )

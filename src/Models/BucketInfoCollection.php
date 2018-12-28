@@ -7,10 +7,8 @@ use MyENA\RGW\AbstractModelCollection;
 /**
  * @OA\Schema(
  *     schema="RGWBucketInfoCollection",
- *     @OA\Schema(
- *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWBucketInfo")
- *     )
+ *     type="array",
+ *     @OA\Items(ref="#/components/schemas/RGWBucketInfo")
  * )
  */
 

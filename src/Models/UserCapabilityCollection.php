@@ -7,10 +7,8 @@ use MyENA\RGW\AbstractModelCollection;
 /**
  * @OA\Schema(
  *     schema="RGWUserCapabilityCollection",
- *     @OA\Schema(
- *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWUserCapability")
- *     )
+ *     type="array",
+ *     @OA\Items(ref="#/components/schemas/RGWUserCapability")
  * )
  */
 

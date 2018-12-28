@@ -5,68 +5,48 @@ namespace MyENA\RGW\Models;
 /**
  * @OA\Schema(
  *     schema="RGWMetadataUserInfo",
- *     @OA\Schema(
- *          type="object"
- *      ),
+ *     type="object",
  *     ref="$/definitions/RGWUserInfo",
  *     @OA\Property(
  *          property="auid",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="op_mask",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="default_placement",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="placement_tags",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(type="string")
- *          )
+ *          type="array",
+ *          @OA\Items(type="string"),
  *     ),
  *     @OA\Property(
  *          property="bucket_quota",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="user_quota",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="temp_url_keys",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(type="string")
- *          )
+ *          type="array",
+ *          @OA\Items(type="string"),
  *     ),
  *     @OA\Property(
  *          property="type",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="attrs",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
  *     )
  * )
  */

@@ -7,38 +7,26 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWQuotaMeta",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="enabled",
- *          @OA\Schema(
- *              type="boolean"
- *          )
+ *          type="boolean",
  *     ),
  *     @OA\Property(
  *          property="max_size_kb",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="max_objects",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="check_on_raw",
- *          @OA\Schema(
- *              type="boolean"
- *          )
+ *          type="boolean",
  *     ),
  *     @OA\Property(
  *          property="max_size",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     )
  * )
  */

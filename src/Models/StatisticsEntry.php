@@ -7,50 +7,34 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWStatisticsEntry",
- *     @OA\Schema(
- *          type="object"
- *      ),
+ *     type="object",
  *     @OA\Property(
  *          property="size_kb",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="size_kb_actual",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="num_objects",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="size",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="size_actual",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="size_utilized",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="size_kb_utilized",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     )
  * )
  */

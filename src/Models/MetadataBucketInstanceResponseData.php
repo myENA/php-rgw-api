@@ -7,22 +7,16 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWMetadataBucketInstanceResponseData",
- *     @OA\Schema(
- *          type="object"
- *      ),
+ *     type="object",
  *     @OA\Property(
  *          property="bucket_info",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWMetadataBucketInstanceInfo"
  *     ),
  *     @OA\Property(
  *          property="attrs",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
  *     )
  * )
  */
