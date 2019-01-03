@@ -7,20 +7,14 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWMetadataVersion",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="tag",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="ver",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     )
  * )
  */

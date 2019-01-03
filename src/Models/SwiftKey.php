@@ -7,20 +7,14 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWSwiftKey",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="user",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="secret_key",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     )
  * )
  */

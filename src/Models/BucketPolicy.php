@@ -7,21 +7,15 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWBucketPolicy",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="owner",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketPolicyOwner"
  *     ),
  *     @OA\Property(
  *          property="acl",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketPolicyACL"
  *     )
  * )

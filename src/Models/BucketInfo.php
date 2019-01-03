@@ -7,107 +7,73 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWBucketInfo",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="bucket",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="pool",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="index_pool",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="id",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="marker",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="owner",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="ver",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="master_ver",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="mtime",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="max_marker",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="usage",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketUsage"
  *     ),
  *     @OA\Property(
  *          property="bucket_quota",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="zonegroup",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="placement_rule",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="explicit_placement",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketPlacement"
  *     ),
  *     @OA\Property(
  *          property="index_type",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     )
  * )
  */

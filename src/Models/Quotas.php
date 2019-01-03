@@ -7,21 +7,15 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWQuotas",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="bucket_quota",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="user_quota",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWQuotaMeta"
  *     )
  * )

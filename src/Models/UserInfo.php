@@ -7,78 +7,54 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWUserInfo",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="tenant",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="user_id",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="display_name",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="email",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="suspended",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="max_buckets",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     ),
  *     @OA\Property(
  *          property="subusers",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
  *     ),
  *     @OA\Property(
  *          property="keys",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWUserKey")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWUserKey")
  *     ),
  *     @OA\Property(
  *          property="swift_keys",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWSwiftKey")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWSwiftKey")
  *     ),
  *     @OA\Property(
  *          property="caps",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(ref="#/components/schemas/RGWUserCapability")
- *          )
+ *          type="array",
+ *          @OA\Items(ref="#/components/schemas/RGWUserCapability")
  *     ),
  *     @OA\Property(
  *          property="stats",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWStatisticsEntry"
  *     )
  * )

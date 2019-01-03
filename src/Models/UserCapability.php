@@ -7,20 +7,14 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWUserCapability",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="type",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     ),
  *     @OA\Property(
  *          property="perm",
- *          @OA\Schema(
- *              type="string"
- *          )
+ *          type="string"
  *     )
  * )
  */

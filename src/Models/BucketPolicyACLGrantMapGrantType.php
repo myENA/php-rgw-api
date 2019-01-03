@@ -7,14 +7,10 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWBucketPolicyACLGrantMapGrantType",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="type",
- *          @OA\Schema(
- *              type="integer"
- *          )
+ *          type="integer"
  *     )
  * )
  */

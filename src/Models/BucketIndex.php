@@ -10,21 +10,15 @@ use function MyENA\RGW\decodeMultiBody;
 /**
  * @OA\Schema(
  *     schema="RGWBucketIndex",
- *     @OA\Schema(
- *          type="object"
- *     ),
+ *     type="object",
  *     @OA\Property(
  *          property="new_objects",
- *          @OA\Schema(
- *              type="array",
- *              @OA\Items(type="string")
- *          )
+ *          type="array",
+ *          @OA\Items(type="string"),
  *     ),
  *     @OA\Property(
  *          property="headers",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketIndexHeaders"
  *     )
  * )

@@ -7,21 +7,15 @@ use MyENA\RGW\AbstractModel;
 /**
  * @OA\Schema(
  *     schema="RGWBucketIndexHeaders",
- *     @OA\Schema(
- *          type="object"
- *      ),
+ *     type="object",
  *     @OA\Property(
  *          property="existing_header",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     ),
  *     @OA\Property(
  *          property="calculated_header",
- *          @OA\Schema(
- *              type="object"
- *          ),
+ *          type="object",
  *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     )
  * )
