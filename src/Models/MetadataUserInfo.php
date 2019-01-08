@@ -8,7 +8,7 @@ namespace MyENA\RGW\Models;
  *     type="object",
  *     allOf={
  *          @OA\Schema(ref="$/definitions/RGWUserInfo"),
- *          @OA\Schema(r
+ *          @OA\Schema(
  *              @OA\Property(
  *                  property="auid",
  *                  type="integer"

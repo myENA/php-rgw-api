@@ -10,7 +10,7 @@ use MyENA\RGW\AbstractModelCollection;
  *     type="array",
  *     @OA\Items(
  *          @OA\Schema(ref="#/components/schemas/RGWUserKey")
- *      )
+ *     )
  * )
  */
 
