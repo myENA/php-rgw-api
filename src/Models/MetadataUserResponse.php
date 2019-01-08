@@ -15,6 +15,7 @@ namespace MyENA\RGW\Models;
  *                  ref="#/components/schemas/RGWMetadataUserInfo"
  *              )
  *          )
+ *      }
  * )
  */
 
