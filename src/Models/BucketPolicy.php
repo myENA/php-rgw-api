@@ -8,16 +8,20 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicy",
  *     type="object",
- *     @OA\Property(
- *          property="owner",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyOwner"
- *     ),
- *     @OA\Property(
- *          property="acl",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACL"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="owner",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPolicyOwner")
+ *              ),
+ *              @OA\Property(
+ *                  property="acl",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACL")
+ *              )
+ *          )
+ *      }
  * )
  */
 

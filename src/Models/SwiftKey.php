@@ -8,14 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWSwiftKey",
  *     type="object",
- *     @OA\Property(
- *          property="user",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="secret_key",
- *          type="string"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="user",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="secret_key",
+ *                  type="string"
+ *              )
+ *          )
+ *      }
  * )
  */
 

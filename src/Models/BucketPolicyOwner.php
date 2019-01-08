@@ -8,14 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyOwner",
  *     type="object",
- *     @OA\Property(
- *          property="display_name",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="id",
- *          type="string"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="display_name",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="id",
+ *                  type="string"
+ *              )
+ *          )
+ *      }
  * )
  */
 

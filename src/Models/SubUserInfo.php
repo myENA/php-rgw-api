@@ -8,14 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWSubUserInfo",
  *     type="object",
- *     @OA\Property(
- *          property="id",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="permissions",
- *          type="string"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="id",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="permissions",
+ *                  type="string"
+ *              )
+ *          )
+ *      }
  * )
  */
 

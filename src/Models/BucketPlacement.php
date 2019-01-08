@@ -8,18 +8,22 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPlacement",
  *     type="object",
- *     @OA\Property(
- *          property="data_pool",
- *          type="integer"
- *     ),
- *     @OA\Property(
- *          property="data_extra_pool",
- *          type="integer"
- *     ),
- *     @OA\Property(
- *          property="index_pool",
- *          type="integer"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="data_pool",
+ *                  type="integer"
+ *              ),
+ *              @OA\Property(
+ *                  property="data_extra_pool",
+ *                  type="integer"
+ *              ),
+ *              @OA\Property(
+ *                  property="index_pool",
+ *                  type="integer"
+ *              )
+ *          )
+ *      }
  * )
  */
 

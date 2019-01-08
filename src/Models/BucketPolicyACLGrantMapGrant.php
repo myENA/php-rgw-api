@@ -8,36 +8,40 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyACLGrantMapGrant",
  *     type="object",
- *     @OA\Property(
- *          property="name",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="permission",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantPermission"
- *     ),
- *     @OA\Property(
- *          property="type",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantType"
- *     ),
- *     @OA\Property(
- *          property="email",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="id",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="group",
- *          type="integer"
- *     ),
- *     @OA\Property(
- *          property="url_spec",
- *          type="string"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                   property="name",
+ *                   type="string"
+ *              ),
+ *              @OA\Property(
+ *                   property="permission",
+ *                   type="object",
+ *                   @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantPermission")
+ *              ),
+ *              @OA\Property(
+ *                   property="type",
+ *                   type="object",
+ *                   @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantType")
+ *              ),
+ *              @OA\Property(
+ *                   property="email",
+ *                   type="string"
+ *              ),
+ *              @OA\Property(
+ *                   property="id",
+ *                   type="string"
+ *              ),
+ *              @OA\Property(
+ *                   property="group",
+ *                   type="integer"
+ *              ),
+ *              @OA\Property(
+ *                   property="url_spec",
+ *                   type="string"
+ *              )
+ *          )
+ *      }
  * )
  */
 

@@ -8,14 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWUserCapability",
  *     type="object",
- *     @OA\Property(
- *          property="type",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="perm",
- *          type="string"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="type",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="perm",
+ *                  type="string"
+ *              )
+ *          )
+ *     }
  * )
  */
 

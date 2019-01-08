@@ -8,39 +8,43 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWMetadataBucketInfo",
  *     type="object",
- *     @OA\Property(
- *          property="marker",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="name",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="data_extra_pool",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="pool",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="index_pool",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="tenant",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="bucket_id",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="explicit_placement",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketPlacement"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="marker",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="name",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="data_extra_pool",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="pool",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="index_pool",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="tenant",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="bucket_id",
+ *                  type="string"
+ *              ),
+ *              @OA\Property(
+ *                  property="explicit_placement",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPlacement")
+ *              )
+ *          )
+ *      }
  * )
  */
 

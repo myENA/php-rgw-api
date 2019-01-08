@@ -8,11 +8,15 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketIndexUsage",
  *     type="object",
- *     @OA\Property(
- *          property="usage",
- *          type="object",
- *          ref="#/components/schemas/RGWBucketUsage"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="usage",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketUsage")
+ *              )
+ *          )
+ *      }
  * )
  */
 
