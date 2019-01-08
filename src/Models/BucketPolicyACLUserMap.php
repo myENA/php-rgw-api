@@ -12,11 +12,11 @@ use MyENA\RGW\AbstractModel;
  *          @OA\Property(
  *              property="acl",
  *              type="string"
- *           ),
- *           @OA\Property(
+ *          ),
+ *          @OA\Property(
  *              property="user",
  *              type="string"
- *           )
+ *          )
  *     )
  * )
  */
