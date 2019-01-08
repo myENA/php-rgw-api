@@ -8,19 +8,23 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWMetadataResponse",
  *     type="object",
- *     @OA\Property(
- *          property="key",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="mtime",
- *          type="string"
- *     ),
- *     @OA\Property(
- *          property="ver",
- *          type="object",
- *          ref="#/components/schemas/RGWMetadataVersion"
- *     )
+ *     allOf={
+ *          @OA\Schema(
+ *             @OA\Property(
+ *                  property="key",
+ *                  type="string"
+ *             ),
+ *             @OA\Property(
+ *                  property="mtime",
+ *                  type="string"
+ *             ),
+ *             @OA\Property(
+ *                  property="ver",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWMetadataVersion")
+ *             )
+ *          )
+ *     }
  * )
  */
 

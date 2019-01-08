@@ -7,13 +7,15 @@ namespace MyENA\RGW\Models;
  *     schema="RGWMetadataBucketInstanceResponse",
  *     type="object",
  *     allOf={
- *          @OA\Schema(ref="#/components/schemas/RGWMetadataResponse")
- *     },
- *     @OA\Property(
- *          property="data",
- *          type="object",
- *          ref="#/components/schemas/RGWMetadataBucketInstanceResponseData"
- *     )
+ *          @OA\Schema(ref="#/components/schemas/RGWMetadataResponse"),
+ *          @OA\Schema(
+ *              @OA\Property(
+ *                  property="data",
+ *                  type="object",
+ *                  @OA\Schema(ref="#/components/schemas/RGWMetadataBucketInstanceResponseData")
+ *              )
+ *          )
+ *     }
  * )
  */
 
