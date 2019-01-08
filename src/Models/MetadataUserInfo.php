@@ -7,7 +7,7 @@ namespace MyENA\RGW\Models;
  *     schema="RGWMetadataUserInfo",
  *     type="object",
  *     allOf={
- *          @OA\Schema(ref="#/definitions/RGWUserInfo")
+ *          @OA\Schema(ref="#/components/schemas/RGWUserInfo")
  *     },
  *     @OA\Property(
  *          property="auid",
