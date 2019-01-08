@@ -9,10 +9,8 @@ use MyENA\RGW\AbstractModelCollection;
  *     schema="RGWUserKeyCollection",
  *     type="array",
  *     @OA\Items(
- *          allOf={
- *              @OA\Schema(ref="#/components/schemas/RGWUserKey")
- *          }
- *      )
+ *          @OA\Schema(ref="#/components/schemas/RGWUserKey")
+ *     )
  * )
  */
 

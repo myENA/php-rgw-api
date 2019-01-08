@@ -8,20 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWQuotas",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="bucket_quota",
- *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
- *              ),
- *              @OA\Property(
- *                  property="user_quota",
- *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *         @OA\Property(
+ *             property="bucket_quota",
+ *             type="object",
+ *             @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *         ),
+ *         @OA\Property(
+ *             property="user_quota",
+ *             type="object",
+ *             @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *         )
+ *     )
  * )
  */
 

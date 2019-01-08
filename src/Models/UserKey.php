@@ -8,22 +8,20 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWUserKey",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="user",
- *                  type="string"
- *               ),
- *              @OA\Property(
- *                  property="access_key",
- *                  type="string"
- *              ),
- *              @OA\Property(
- *                  property="secret_key",
- *                  type="string"
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *         @OA\Property(
+ *             property="user",
+ *             type="string"
+ *          ),
+ *         @OA\Property(
+ *             property="access_key",
+ *             type="string"
+ *         ),
+ *         @OA\Property(
+ *             property="secret_key",
+ *             type="string"
+ *         )
+ *     )
  * )
  */
 

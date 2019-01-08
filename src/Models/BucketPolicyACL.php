@@ -8,31 +8,29 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyACL",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="acl_group_map",
- *                  type="array",
- *                  @OA\Items(
- *                      @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGroupMap")
- *                  )
- *              ),
- *              @OA\Property(
- *                  property="acl_user_map",
- *                  type="array",
- *                  @OA\Items(
- *                      @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLUserMap")
- *                  )
- *              ),
- *              @OA\Property(
- *                  property="grant_map",
- *                  type="array",
- *                  @OA\Items(
- *                      @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMap")
- *                  )
+ *     @OA\Schema(
+ *          @OA\Property(
+ *             property="acl_group_map",
+ *             type="array",
+ *             @OA\Items(
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGroupMap")
+ *             )
+ *          ),
+ *          @OA\Property(
+ *              property="acl_user_map",
+ *              type="array",
+ *              @OA\Items(
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLUserMap")
+ *              )
+ *          ),
+ *          @OA\Property(
+ *              property="grant_map",
+ *              type="array",
+ *              @OA\Items(
+ *                  @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMap")
  *              )
  *          )
- *      }
+ *      )
  * )
  */
 

@@ -8,18 +8,16 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyACLGrantMap",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="id",
- *                  type="string"
- *              ),
- *              @OA\Property(
- *                  property="grant",
- *                  type="RGWBucketPolicyACLGrantMapGrant"
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *         @OA\Property(
+ *             property="id",
+ *             type="string"
+ *         ),
+ *         @OA\Property(
+ *             property="grant",
+ *             type="RGWBucketPolicyACLGrantMapGrant"
+ *         )
+ *     )
  * )
  */
 

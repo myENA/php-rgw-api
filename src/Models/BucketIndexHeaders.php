@@ -8,20 +8,18 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketIndexHeaders",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="existing_header",
- *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
- *              ),
- *              @OA\Property(
- *                  property="calculated_header",
- *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *         @OA\Property(
+ *             property="existing_header",
+ *             type="object",
+ *             @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
+ *         ),
+ *         @OA\Property(
+ *             property="calculated_header",
+ *             type="object",
+ *             @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
+ *         )
+ *     )
  * )
  */
 

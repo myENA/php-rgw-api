@@ -8,18 +8,16 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyACLGroupMap",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="acl",
- *                  type="string"
- *              ),
- *              @OA\Property(
- *                  property="group",
- *                  type="string"
- *              )
+ *     @OA\Schema(
+ *          @OA\Property(
+ *              property="acl",
+ *              type="string"
+ *          ),
+ *          @OA\Property(
+ *              property="group",
+ *              type="string"
  *          )
- *      }
+ *     )
  * )
  */
 

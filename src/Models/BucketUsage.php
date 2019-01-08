@@ -8,30 +8,28 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketUsage",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="rgw_none",
- *                  type="object",
- *                  ref="#/components/schemas/RGWStatisticsEntry"
- *              ),
- *              @OA\Property(
- *                  property="rgw_main",
- *                  type="object",
- *                  ref="#/components/schemas/RGWStatisticsEntry"
- *              ),
- *              @OA\Property(
- *                  property="rgw_shadow",
- *                  type="object",
- *                  ref="#/components/schemas/RGWStatisticsEntry"
- *               ),
- *              @OA\Property(
- *                  property="rgw_multimedia",
- *                  type="object",
- *                  ref="#/components/schemas/RGWStatisticsEntry"
- *              )
+ *     @OA\Schema(
+ *          @OA\Property(
+ *              property="rgw_none",
+ *              type="object",
+ *              @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ),
+ *          @OA\Property(
+ *              property="rgw_main",
+ *              type="object",
+ *              @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ),
+ *          @OA\Property(
+ *              property="rgw_shadow",
+ *              type="object",
+ *              @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *           ),
+ *          @OA\Property(
+ *              property="rgw_multimedia",
+ *              type="object",
+ *              @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
  *          )
- *      }
+ *      )
  * )
  */
 

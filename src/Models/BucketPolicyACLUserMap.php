@@ -8,18 +8,16 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWBucketPolicyACLUserMap",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="acl",
- *                  type="string"
- *              ),
- *              @OA\Property(
- *                  property="user",
- *                  type="string"
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *          @OA\Property(
+ *              property="acl",
+ *              type="string"
+ *           ),
+ *           @OA\Property(
+ *              property="user",
+ *              type="string"
+ *           )
+ *     )
  * )
  */
 

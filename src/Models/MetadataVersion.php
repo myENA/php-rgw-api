@@ -8,18 +8,16 @@ use MyENA\RGW\AbstractModel;
  * @OA\Schema(
  *     schema="RGWMetadataVersion",
  *     type="object",
- *     allOf={
- *          @OA\Schema(
- *              @OA\Property(
- *                  property="tag",
- *                  type="string"
- *              ),
- *              @OA\Property(
- *                  property="ver",
- *                  type="integer"
- *              )
- *          )
- *      }
+ *     @OA\Schema(
+ *         @OA\Property(
+ *             property="tag",
+ *             type="string"
+ *         ),
+ *         @OA\Property(
+ *             property="ver",
+ *             type="integer"
+ *         )
+ *     )
  * )
  */
 
