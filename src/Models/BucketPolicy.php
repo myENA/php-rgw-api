@@ -11,12 +11,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="owner",
  *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyOwner"
+ *          @OA\Schema(ref="#/components/schemas/RGWBucketPolicyOwner")
  *     ),
  *     @OA\Property(
  *          property="acl",
  *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACL"
+ *          @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACL")
  *     )
  * )
  */

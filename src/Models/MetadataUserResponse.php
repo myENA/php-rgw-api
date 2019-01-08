@@ -6,11 +6,11 @@ namespace MyENA\RGW\Models;
  * @OA\Schema(
  *     schema="RGWMetadataUserResponse",
  *     type="object",
- *     ref="$/definitions/RGWMetadataResponse",
+ *     @OA\Schema("#/components/schemas/RGWMetadataResponse"),
  *     @OA\Property(
  *          property="data",
  *          type="object",
- *          ref="#/components/schemas/RGWMetadataUserInfo"
+ *          @OA\Schema(ref="#/components/schemas/RGWMetadataUserInfo")
  *     )
  * )
  */

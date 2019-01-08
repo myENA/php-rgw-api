@@ -19,7 +19,7 @@ use function MyENA\RGW\decodeMultiBody;
  *     @OA\Property(
  *          property="headers",
  *          type="object",
- *          ref="#/components/schemas/RGWBucketIndexHeaders"
+ *          @OA\Schema(ref="#/components/schemas/RGWBucketIndexHeaders")
  *     )
  * )
  */

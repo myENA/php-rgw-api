@@ -15,12 +15,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="permission",
  *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantPermission"
+ *          @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantPermission")
  *     ),
  *     @OA\Property(
  *          property="type",
  *          type="object",
- *          ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantType"
+ *          @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMapGrantType")
  *     ),
  *     @OA\Property(
  *          property="email",

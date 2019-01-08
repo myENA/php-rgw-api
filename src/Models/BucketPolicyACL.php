@@ -11,17 +11,23 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="acl_group_map",
  *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLGroupMap")
+ *          @OA\Items(
+ *              @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGroupMap")
+ *          )
  *     ),
  *     @OA\Property(
  *          property="acl_user_map",
  *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLUserMap")
+ *          @OA\Items(
+ *              @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLUserMap")
+ *          )
  *     ),
  *     @OA\Property(
  *          property="grant_map",
  *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWBucketPolicyACLGrantMap")
+ *          @OA\Items(
+ *              @OA\Schema(ref="#/components/schemas/RGWBucketPolicyACLGrantMap")
+ *          )
  *     )
  * )
  */

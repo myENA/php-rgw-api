@@ -19,7 +19,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="ver",
  *          type="object",
- *          ref="#/components/schemas/RGWMetadataVersion"
+ *          @OA\Schema(ref="#/components/schemas/RGWMetadataVersion")
  *     )
  * )
  */

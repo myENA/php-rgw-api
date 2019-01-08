@@ -11,7 +11,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="bucket",
  *          type="object",
- *          ref="#/components/schemas/RGWMetadataBucketInfo"
+ *          @OA\Schema(ref="#/components/schemas/RGWMetadataBucketInfo")
  *     ),
  *     @OA\Property(
  *          property="num_shards",
@@ -68,7 +68,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="quota",
  *          type="object",
- *          ref="#/components/schemas/RGWQuotaMeta"
+ *          @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
  *     ),
  *     @OA\Property(
  *          property="mdsearch_config",

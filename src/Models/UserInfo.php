@@ -35,12 +35,15 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="subusers",
  *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
+ *          @OA\Items(
+ *              ref="#/components/schemas/RGWSubUserInfo"
+ *          )
  *     ),
  *     @OA\Property(
  *          property="keys",
  *          type="array",
- *          @OA\Items(ref="#/components/schemas/RGWUserKey")
+ *          @OA\Items(
+ *              ref="#/components/schemas/RGWUserKey")
  *     ),
  *     @OA\Property(
  *          property="swift_keys",
@@ -55,7 +58,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="stats",
  *          type="object",
- *          ref="#/components/schemas/RGWStatisticsEntry"
+ *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
  *     )
  * )
  */
