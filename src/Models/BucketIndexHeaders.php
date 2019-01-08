@@ -11,12 +11,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="existing_header",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
+ *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     ),
  *     @OA\Property(
  *          property="calculated_header",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketIndexUsage")
+ *          ref="#/components/schemas/RGWBucketIndexUsage"
  *     )
  * )
  */

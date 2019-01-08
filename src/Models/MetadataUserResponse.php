@@ -12,7 +12,7 @@ namespace MyENA\RGW\Models;
  *              @OA\Property(
  *                  property="data",
  *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWMetadataUserInfo")
+ *                  ref="#/components/schemas/RGWMetadataUserInfo"
  *              )
  *          )
  * )

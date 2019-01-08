@@ -51,12 +51,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="usage",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketUsage")
+ *          ref="#/components/schemas/RGWBucketUsage"
  *     ),
  *     @OA\Property(
  *          property="bucket_quota",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="zonegroup",
@@ -69,7 +69,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="explicit_placement",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketPlacement")
+ *          ref="#/components/schemas/RGWBucketPlacement"
  *     ),
  *     @OA\Property(
  *          property="index_type",

@@ -11,12 +11,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="bucket_quota",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     ),
  *     @OA\Property(
  *          property="user_quota",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *          ref="#/components/schemas/RGWQuotaMeta"
  *     )
  * )
  */

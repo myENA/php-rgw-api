@@ -11,14 +11,12 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="bucket_info",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWMetadataBucketInstanceInfo")
+ *          ref="#/components/schemas/RGWMetadataBucketInstanceInfo"
  *     ),
  *     @OA\Property(
  *          property="attrs",
  *          type="array",
- *          @OA\Items(
- *              @OA\Schema(ref="#/components/schemas/RGWMetadataAttribute")
- *          )
+ *          @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
  *     )
  * )
  */

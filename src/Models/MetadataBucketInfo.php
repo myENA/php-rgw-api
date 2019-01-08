@@ -39,7 +39,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="explicit_placement",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketPlacement")
+ *          ref="#/components/schemas/RGWBucketPlacement"
  *     )
  * )
  */

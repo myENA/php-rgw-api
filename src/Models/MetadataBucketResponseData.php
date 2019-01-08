@@ -11,7 +11,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="bucket",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWMetadataBucketInfo")
+ *          ref="#/components/schemas/RGWMetadataBucketInfo"
  *     ),
  *     @OA\Property(
  *          property="has_bucket_info",

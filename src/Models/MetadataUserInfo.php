@@ -7,7 +7,7 @@ namespace MyENA\RGW\Models;
  *     schema="RGWMetadataUserInfo",
  *     type="object",
  *     allOf={
- *          @OA\Schema(ref="$/definitions/RGWUserInfo"),
+ *          @OA\Schema(ref="#/components/schemas/RGWUserInfo"),
  *          @OA\Schema(
  *              @OA\Property(
  *                  property="auid",
@@ -29,12 +29,12 @@ namespace MyENA\RGW\Models;
  *              @OA\Property(
  *                  property="bucket_quota",
  *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *                  ref="#/components/schemas/RGWQuotaMeta"
  *              ),
  *              @OA\Property(
  *                  property="user_quota",
  *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWQuotaMeta")
+ *                  ref="#/components/schemas/RGWQuotaMeta"
  *              ),
  *              @OA\Property(
  *                  property="temp_url_keys",
@@ -48,8 +48,7 @@ namespace MyENA\RGW\Models;
  *              @OA\Property(
  *                  property="attrs",
  *                  type="array",
- *                  @OA\Items(
- *                      @OA\Schema(ref="#/components/schemas/RGWMetadataAttribute")
+ *                  @OA\Items(ref="#/components/schemas/RGWMetadataAttribute")
  *              )
  *          )
  *     }

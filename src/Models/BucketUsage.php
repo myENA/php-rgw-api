@@ -11,22 +11,22 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="rgw_none",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
  *     @OA\Property(
  *          property="rgw_main",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
  *     @OA\Property(
  *          property="rgw_shadow",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     ),
  *     @OA\Property(
  *          property="rgw_multimedia",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     )
  * )
  */

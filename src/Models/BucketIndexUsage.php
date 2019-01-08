@@ -11,7 +11,7 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="usage",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWBucketUsage")
+ *          ref="#/components/schemas/RGWBucketUsage"
  *     )
  * )
  */

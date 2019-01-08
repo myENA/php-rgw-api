@@ -35,35 +35,27 @@ use MyENA\RGW\AbstractModel;
  *     @OA\Property(
  *          property="subusers",
  *          type="array",
- *          @OA\Items(
- *              @OA\Schema(ref="#/components/schemas/RGWSubUserInfo")
- *          )
+ *          @OA\Items(ref="#/components/schemas/RGWSubUserInfo")
  *     ),
  *     @OA\Property(
  *          property="keys",
  *          type="array",
- *          @OA\Items(
- *              @OA\Schema(ref="#/components/schemas/RGWUserKey")
- *          )
+ *          @OA\Items(ref="#/components/schemas/RGWUserKey")
  *     ),
  *     @OA\Property(
  *          property="swift_keys",
  *          type="array",
- *          @OA\Items(
- *              @OA\Schema(ref="#/components/schemas/RGWSwiftKey")
- *          )
+ *          @OA\Items(ref="#/components/schemas/RGWSwiftKey")
  *     ),
  *     @OA\Property(
  *          property="caps",
  *          type="array",
- *          @OA\Items(
- *              @OA\Schema(ref="#/components/schemas/RGWUserCapability")
- *          )
+ *          @OA\Items(ref="#/components/schemas/RGWUserCapability")
  *     ),
  *     @OA\Property(
  *          property="stats",
  *          type="object",
- *          @OA\Schema(ref="#/components/schemas/RGWStatisticsEntry")
+ *          ref="#/components/schemas/RGWStatisticsEntry"
  *     )
  * )
  */

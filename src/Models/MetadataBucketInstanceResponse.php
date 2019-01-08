@@ -12,7 +12,7 @@ namespace MyENA\RGW\Models;
  *              @OA\Property(
  *                  property="data",
  *                  type="object",
- *                  @OA\Schema(ref="#/components/schemas/RGWMetadataBucketInstanceResponseData")
+ *                  ref="#/components/schemas/RGWMetadataBucketInstanceResponseData"
  *              )
  *          )
  *      }
