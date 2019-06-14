@@ -46,6 +46,6 @@ class InstanceOfValidator implements Validator
      */
     public function expectedStatement(): string
     {
-        return 'object that is an instance of '.$this->class;
+        return 'object that is an instance of ' . $this->class;
     }
 }

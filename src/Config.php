@@ -22,6 +22,15 @@ class Config implements LoggerAwareInterface
     const DEFAULT_CLIENT_TIMEOUT  = 10;
     const DEFAULT_SKIP_SSL_VERIFY = false;
 
+    const FIELD_CLIENT_TIMEOUT = 'clientTimeout';
+    const FIELD_ADDRESS        = 'address';
+    const FIELD_ADMIN_PATH     = 'adminPath';
+    const FIELD_API_KEY        = 'apiKey';
+    const FIELD_API_SECRET     = 'apiSecret';
+    const FIELD_NO_SSL         = 'noSSL';
+    const FIELD_HTTP_CLIENT    = 'httpClient';
+    const FIELD_SILENT         = 'silent';
+
     /** @var int */
     private $clientTimeout = self::DEFAULT_CLIENT_TIMEOUT;
     /** @var string */
@@ -32,6 +41,8 @@ class Config implements LoggerAwareInterface
     private $apiKey = '';
     /** @var string */
     private $apiSecret = '';
+    /** @var bool */
+    private $noSSL = false;
 
     /** @var \GuzzleHttp\ClientInterface */
     private $httpClient;
@@ -52,12 +63,29 @@ class Config implements LoggerAwareInterface
             $logger = new NullLogger();
         }
         $this->setLogger($logger);
-        foreach ($config as $k => $v) {
-            $k = sanitizeName($k, '_', true);
-            if ('httpClient' === $k) {
-                $httpClient = $v;
+        foreach ($config + self::getConfigFromEnvironment() as $rawK => $v) {
+            $k = sanitizeName($rawK, '_', true);
+            if (self::FIELD_CLIENT_TIMEOUT === $k) {
+                $this->setClientTimeout($config[self::FIELD_CLIENT_TIMEOUT]);
+            } elseif (self::FIELD_ADDRESS === $k) {
+                $this->setAddress($config[self::FIELD_ADDRESS]);
+            } elseif (self::FIELD_ADMIN_PATH === $k) {
+                $this->setAdminPath($config[self::FIELD_ADMIN_PATH]);
+            } elseif (self::FIELD_API_KEY === $k) {
+                $this->setApiKey($config[self::FIELD_API_KEY]);
+            } elseif (self::FIELD_API_SECRET === $k) {
+                $this->setApiSecret($config[self::FIELD_API_SECRET]);
+            } elseif (self::FIELD_NO_SSL === $k) {
+                $this->setNoSSL($config[self::FIELD_NO_SSL]);
+            } elseif (self::FIELD_HTTP_CLIENT === $k) {
+                $httpClient = $config[self::FIELD_HTTP_CLIENT];
+            } elseif (self::FIELD_SILENT === $k) {
+                $this->setSilent($config[self::FIELD_SILENT]);
             } else {
-                $this->{'set' . ucfirst($k)}($v);
+                throw new \OutOfBoundsException(sprintf(
+                    'Unknown configuration key "%s" seen.',
+                    $rawK
+                ));
             }
         }
         if (null === $httpClient) {
@@ -77,10 +105,11 @@ class Config implements LoggerAwareInterface
         $ret = [];
         foreach ([
                      ENV_RGW_API_HTTP_ADDR  => tryGetEnvParam(ENV_RGW_API_HTTP_ADDR, '127.0.0.1'),
+                     ENV_RGW_API_NO_SSL     => tryGetBoolEnvParam(ENV_RGW_API_NO_SSL, '0'),
                      ENV_RGW_API_ADMIN_PATH => tryGetEnvParam(ENV_RGW_API_ADMIN_PATH, 'admin'),
                      ENV_RGW_API_KEY        => tryGetEnvParam(ENV_RGW_API_KEY),
                      ENV_RGW_API_SECRET     => tryGetEnvParam(ENV_RGW_API_SECRET),
-                     ENV_RGW_LOG_SILENT     => tryGetEnvParam(ENV_RGW_LOG_SILENT, '0'),
+                     ENV_RGW_LOG_SILENT     => tryGetBoolEnvParam(ENV_RGW_LOG_SILENT, '0'),
                  ] as $k => $v) {
             if ('' !== $v) {
                 $ret[$k] = $v;
@@ -90,27 +119,37 @@ class Config implements LoggerAwareInterface
     }
 
     /**
+     * @return array
+     */
+    public static function getConfigFromEnvironment(): array
+    {
+        $conf = [];
+        foreach (self::getEnvironmentConfig() as $k => $v) {
+            if (ENV_RGW_API_HTTP_ADDR === $k) {
+                $conf[self::FIELD_ADDRESS] = $v;
+            } elseif (ENV_RGW_API_NO_SSL === $k) {
+                $conf[self::FIELD_NO_SSL] = $v;
+            } elseif (ENV_RGW_API_ADMIN_PATH === $k) {
+                $conf[self::FIELD_ADMIN_PATH] = $v;
+            } elseif (ENV_RGW_API_KEY === $k) {
+                $conf[self::FIELD_API_KEY] = $v;
+            } elseif (ENV_RGW_API_SECRET === $k) {
+                $conf[self::FIELD_API_SECRET] = $v;
+            } elseif (ENV_RGW_LOG_SILENT === $k) {
+                $conf[self::FIELD_SILENT] = $v;
+            }
+        }
+        return $conf;
+    }
+
+    /**
      * @param \GuzzleHttp\Client|null $client
      * @param null|\Psr\Log\LoggerInterface $logger
      * @return \MyENA\RGW\Config
      */
     public static function defaultConfig(?GuzzleClient $client = null, ?LoggerInterface $logger = null): Config
     {
-        $conf = [];
-        foreach (self::getEnvironmentConfig() as $k => $v) {
-            if (ENV_RGW_API_HTTP_ADDR === $k) {
-                $conf['address'] = $v;
-            } elseif (ENV_RGW_API_ADMIN_PATH === $k) {
-                $conf['adminPath'] = $v;
-            } elseif (ENV_RGW_API_KEY === $k) {
-                $conf['apiKey'] = $v;
-            } elseif (ENV_RGW_API_SECRET === $k) {
-                $conf['apiSecret'] = $v;
-            } elseif (ENV_RGW_LOG_SILENT === $k) {
-                $conf['silent'] = (bool)$v;
-            }
-        }
-        return new static($conf, $client, $logger);
+        return new static(self::getConfigFromEnvironment(), $client, $logger);
     }
 
     /**
@@ -191,6 +230,22 @@ class Config implements LoggerAwareInterface
     public function setApiSecret(string $apiSecret): void
     {
         $this->apiSecret = $apiSecret;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNoSSL(): bool
+    {
+        return $this->noSSL;
+    }
+
+    /**
+     * @param bool $noSSL
+     */
+    public function setNoSSL(bool $noSSL): void
+    {
+        $this->noSSL = $noSSL;
     }
 
     /**

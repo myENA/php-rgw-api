@@ -140,6 +140,7 @@ class Client
                 }
             }
             $uri = $uri->withQuery(implode('&', $params));
+            $this->config->getLogger()->debug(sprintf('Compiled URL: %s', $uri));
         }
         $psrRequest = new PSR7Request($r->method(), $uri, $r->headers(), $r->body());
         if ($r->authenticated()) {
@@ -155,7 +156,8 @@ class Client
     {
         if (!isset($this->address)) {
             $this->address = sprintf(
-                'https://%s/%s',
+                '%s://%s/%s',
+                $this->config->isNoSSL() ? 'http' : 'https',
                 $this->config->getAddress(),
                 $this->config->getAdminPath()
             );

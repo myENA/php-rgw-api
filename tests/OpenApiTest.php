@@ -30,8 +30,7 @@ class OpenApiTest extends TestCase
  *      title="php-rgw-api",
  *      description="php-rgw-api",
  *      @OA\Contact(
- *          email="andreil@ena.com",
-*           email="dcarbone@ena.com"
+ *          email="dcarbone@ena.com"
  *      ),
  *      @OA\License(
  *         name="Mozilla Public License 2.0",

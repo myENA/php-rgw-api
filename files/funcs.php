@@ -283,3 +283,43 @@ function tryGetEnvParam(string $param, string $default = ''): string
         return $default;
     }
 }
+
+/**
+ * @param string $param
+ * @param string $default
+ * @return bool
+ */
+function tryGetBoolEnvParam(string $param, string $default = ''): bool
+{
+    $p = tryGetEnvParam($param, $default);
+    if ('' === $p) {
+        return false;
+    }
+
+    $p = strtolower($p);
+    if ('true' === $p) {
+        return true;
+    }
+    if ('false' === $p) {
+        return false;
+    }
+    if (ctype_digit($p)) {
+        return 0 < (int)$p;
+    }
+
+    return false;
+}
+
+/**
+ * @param string $param
+ * @param string $default
+ * @return int
+ */
+function tryGetIntEnvParam(string $param, string $default = ''): int
+{
+    $p = tryGetEnvParam($param, $default);
+    if (ctype_digit($p)) {
+        return (int)$p;
+    }
+    return 0;
+}

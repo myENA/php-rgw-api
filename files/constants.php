@@ -26,6 +26,7 @@ const RGW_CAPABILITY_PERMS = ['*', 'read', 'write', 'read,write', 'read, write']
 
 // Attempt to load config from ENV if not otherwise defined
 const ENV_RGW_API_HTTP_ADDR = 'RGW_API_HTTP_ADDR';
+const ENV_RGW_API_NO_SSL = 'RGW_API_NO_SSL';
 const ENV_RGW_API_ADMIN_PATH = 'RGW_API_ADMIN_PATH';
 const ENV_RGW_API_KEY = 'RGW_API_KEY';
 const ENV_RGW_API_SECRET = 'RGW_API_SECRET';
