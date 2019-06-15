@@ -63,7 +63,10 @@ class Config implements LoggerAwareInterface
             $logger = new NullLogger();
         }
         $this->setLogger($logger);
-        foreach ($config + self::getConfigFromEnvironment() as $rawK => $v) {
+        // add env values
+        $config += self::getConfigFromEnvironment();
+        // parse conf
+        foreach ($config as $rawK => $v) {
             $k = sanitizeName($rawK, '_', true);
             if (self::FIELD_CLIENT_TIMEOUT === $k) {
                 $this->setClientTimeout($config[self::FIELD_CLIENT_TIMEOUT]);
