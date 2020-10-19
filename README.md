@@ -9,7 +9,7 @@ This lib is designed to be installed using [Composer](https://getcomposer.org)
 ```json
 {
   "require": {
-    "myena/php-rgw-api": "3.*"
+    "myena/php-rgw-api": "4.*"
   }
 }
 ```
