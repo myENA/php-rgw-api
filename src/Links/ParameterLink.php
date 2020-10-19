@@ -8,7 +8,6 @@ namespace MyENA\RGW\Links;
  */
 interface ParameterLink
 {
-
     /**
      * Must return array of Parameters that will be used on execution.
      *

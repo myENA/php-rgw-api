@@ -88,6 +88,14 @@ class Client
     }
 
     /**
+     * @return \MyENA\RGW\Chain\UsageRootLink
+     */
+    public function Usage(): Chain\UsageRootLink
+    {
+        return Chain\UsageRootLink::new(null, [], $this, $this->config->getLogger());
+    }
+
+    /**
      * @param \MyENA\RGW\Request $request
      * @return array(
      * @type \Psr\Http\Message\ResponseInterface|null

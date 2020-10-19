@@ -20,7 +20,7 @@ use MyENA\RGW\Links\UriLink;
  */
 class UserRootLink extends AbstractLink implements UriLink, HeaderLink
 {
-    const PATH = '/user';
+    public const PATH = '/user';
 
     /**
      * @return string

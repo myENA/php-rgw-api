@@ -13,7 +13,7 @@ use MyENA\RGW\Links\UriLink;
  */
 class Instance extends AbstractLink implements UriLink
 {
-    const PATH = '.instance';
+    public const PATH = '.instance';
 
     /**
      * @return string

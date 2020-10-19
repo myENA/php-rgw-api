@@ -13,7 +13,7 @@ use function MyENA\RGW\decodeBody;
  */
 class ListUsers extends AbstractLink implements MethodLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
     /**
      * @return string

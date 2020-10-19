@@ -43,6 +43,21 @@ function desanitizeName(string $name, string $delimiter): string
 }
 
 /**
+ * @param object $value
+ * @return string
+ */
+function encodeObject(object $value): string
+{
+    if ($value instanceof \DateTime) {
+        return $value->format(RGW_QUERY_DATETIME_FORMAT);
+    }
+    if (method_exists($value, '__toString')) {
+        return strval($value);
+    }
+    return get_class($value);
+}
+
+/**
  * @param mixed $value
  * @return string
  */
@@ -51,9 +66,10 @@ function encodeValue($value): string
     switch (gettype($value)) {
         case 'boolean':
             return $value ? 'true' : 'false';
-
+        case 'object':
+            return encodeObject($value);
         default:
-            return (string)$value;
+            return strval($value);
     }
 }
 

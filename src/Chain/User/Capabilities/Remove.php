@@ -17,9 +17,9 @@ use MyENA\RGW\Validators;
  */
 class Remove extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'DELETE';
+    public const METHOD = 'DELETE';
 
-    const PARAM_USER_CAPABILITIES = 'user-caps';
+    public const PARAM_USER_CAPABILITIES = 'user-caps';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

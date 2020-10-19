@@ -17,9 +17,9 @@ use MyENA\RGW\Validators;
  */
 class Get extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
-    const PARAM_QUOTA_TYPE = 'quota-type';
+    public const PARAM_QUOTA_TYPE = 'quota-type';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

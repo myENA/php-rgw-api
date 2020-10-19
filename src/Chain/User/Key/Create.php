@@ -17,14 +17,14 @@ use MyENA\RGW\Validators;
  */
 class Create extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'PUT';
+    public const METHOD = 'PUT';
 
-    const PARAM_UID          = 'uid';
-    const PARAM_SUBUSER      = 'subuser';
-    const PARAM_ACCESS_KEY   = 'access-key';
-    const PARAM_SECRET_KEY   = 'secret-key';
-    const PARAM_KEY_TYPE     = 'key-type';
-    const PARAM_GENERATE_KEY = 'generate-key';
+    public const PARAM_UID          = 'uid';
+    public const PARAM_SUBUSER      = 'subuser';
+    public const PARAM_ACCESS_KEY   = 'access-key';
+    public const PARAM_SECRET_KEY   = 'secret-key';
+    public const PARAM_KEY_TYPE     = 'key-type';
+    public const PARAM_GENERATE_KEY = 'generate-key';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

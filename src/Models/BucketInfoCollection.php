@@ -3,6 +3,7 @@
 namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModelCollection;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(

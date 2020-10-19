@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
-const RGW_TIME_FORMAT = 'D, d M Y H:i:s O';
+const RGW_AUTH_DATETIME_FORMAT = 'D, d M Y H:i:s O';
+
+const RGW_QUERY_DATETIME_FORMAT = 'Y-m-d H:i:s';
 
 const RGW_SUBRESOURCE_S3 = [
     'acl',

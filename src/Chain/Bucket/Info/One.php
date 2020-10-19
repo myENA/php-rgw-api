@@ -17,9 +17,9 @@ use MyENA\RGW\Validators;
  */
 class One extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
-    const PARAM_BUCKET = 'bucket';
+    public const PARAM_BUCKET = 'bucket';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

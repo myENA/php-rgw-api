@@ -17,10 +17,10 @@ use MyENA\RGW\Validators;
  */
 class Info extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
-    const PARAM_UID   = 'uid';
-    const PARAM_STATS = 'stats';
+    public const PARAM_UID   = 'uid';
+    public const PARAM_STATS = 'stats';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

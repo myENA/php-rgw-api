@@ -13,7 +13,7 @@ use MyENA\RGW\Models\BucketInfoCollection;
  */
 class All extends AbstractLink implements MethodLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
     /**
      * @return string

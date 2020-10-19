@@ -14,7 +14,7 @@ use MyENA\RGW\Links\UriLink;
  */
 class Bucket extends AbstractLink implements UriLink
 {
-    const PATH = '/bucket';
+    public const PATH = '/bucket';
 
     /**
      * @return string

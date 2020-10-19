@@ -20,7 +20,7 @@ use MyENA\RGW\Links\UriLink;
  */
 class BucketRootLink extends AbstractLink implements UriLink, HeaderLink
 {
-    const PATH = '/bucket';
+    public const PATH = '/bucket';
 
     /**
      * @return string

@@ -28,7 +28,7 @@ class V2Signature implements Signature
             ));
         }
 
-        return $request->withHeader('Date', gmdate(RGW_TIME_FORMAT))
+        return $request->withHeader('Date', gmdate(RGW_AUTH_DATETIME_FORMAT))
             ->withHeader('Authorization',
                 sprintf('AWS %s:%s',
                     $config->getApiKey(),
@@ -108,7 +108,7 @@ class V2Signature implements Signature
     {
         $date = (string)$request->getHeaderLine('Date');
         if ('' === $date) {
-            $date = gmdate(RGW_TIME_FORMAT);
+            $date = gmdate(RGW_AUTH_DATETIME_FORMAT);
         }
         return "{$date}\n";
     }

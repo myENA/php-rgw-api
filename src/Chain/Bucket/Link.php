@@ -15,10 +15,10 @@ use MyENA\RGW\Validators;
  */
 class Link extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'PUT';
+    public const METHOD = 'PUT';
 
-    const PARAM_UID    = 'uid';
-    const PARAM_BUCKET = 'bucket';
+    public const PARAM_UID    = 'uid';
+    public const PARAM_BUCKET = 'bucket';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

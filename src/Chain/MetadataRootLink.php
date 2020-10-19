@@ -14,7 +14,7 @@ use MyENA\RGW\Links\UriLink;
  */
 class MetadataRootLink extends AbstractLink implements UriLink, HeaderLink
 {
-    const PATH = '/metadata';
+    public const PATH = '/metadata';
 
     /**
      * @return string

@@ -16,10 +16,10 @@ use MyENA\RGW\Validators;
  */
 class Delete extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'DELETE';
+    public const METHOD = 'DELETE';
 
-    const PARAM_SUBUSER    = 'subuser';
-    const PARAM_PURGE_KEYS = 'purge-keys';
+    public const PARAM_SUBUSER    = 'subuser';
+    public const PARAM_PURGE_KEYS = 'purge-keys';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

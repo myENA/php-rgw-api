@@ -26,7 +26,6 @@ use OpenApi\Annotations as OA;
  */
 class UserCapability extends AbstractModel
 {
-
     public const KEY_TYPE = 'type';
     public const KEY_PERM = 'perm';
 

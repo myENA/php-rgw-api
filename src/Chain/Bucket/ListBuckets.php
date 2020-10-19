@@ -17,9 +17,9 @@ use function MyENA\RGW\decodeBody;
  */
 class ListBuckets extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
-    const PARAM_UID = 'uid';
+    public const PARAM_UID = 'uid';
 
     /** @var \MyENA\RGW\Parameter\[] */
     private $parameters;

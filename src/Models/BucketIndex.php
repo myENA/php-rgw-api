@@ -4,6 +4,7 @@ namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
 use MyENA\RGW\Error\ResponseError;
+use OpenApi\Annotations as OA;
 use Psr\Http\Message\ResponseInterface;
 use function MyENA\RGW\decodeMultiBody;
 

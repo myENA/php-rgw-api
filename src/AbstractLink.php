@@ -22,7 +22,6 @@ use Psr\Log\LoggerInterface;
  */
 abstract class AbstractLink implements LoggerAwareInterface
 {
-
     use LoggerAwareTrait;
 
     /** @var \MyENA\RGW\Client */
@@ -46,10 +45,10 @@ abstract class AbstractLink implements LoggerAwareInterface
     /**
      * TODO: Simplify a bit?
      *
-     * @param \MyENA\RGW\Client $client
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param array $paramValueMap
      * @param \MyENA\RGW\AbstractLink|null $parent
+     * @param array $paramValueMap
+     * @param \MyENA\RGW\Client|null $client
+     * @param \Psr\Log\LoggerInterface|null $logger
      * @return static
      */
     public static function new(
@@ -293,20 +292,5 @@ abstract class AbstractLink implements LoggerAwareInterface
             }
         }
         return $queryParams;
-    }
-
-    /**
-     * @param string $expected
-     * @param mixed $actual
-     * @return \DomainException
-     */
-    protected function createInvalidRequestBodyException(string $expected, $actual): \DomainException
-    {
-        return new \DomainException(sprintf(
-            'Link %s requires body of type %s, %s provided.',
-            get_class($this),
-            $expected,
-            is_object($actual) ? get_class($actual) : gettype($actual)
-        ));
     }
 }

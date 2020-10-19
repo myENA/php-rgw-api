@@ -16,12 +16,12 @@ use MyENA\RGW\Validators;
  */
 class Delete extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'DELETE';
+    public const METHOD = 'DELETE';
 
-    const PARAM_ACCESS_KEY = 'access-key';
-    const PARAM_UID        = 'uid';
-    const PARAM_SUBUSER    = 'subuser';
-    const PARAM_KEY_TYPE   = 'key-type';
+    public const PARAM_ACCESS_KEY = 'access-key';
+    public const PARAM_UID        = 'uid';
+    public const PARAM_SUBUSER    = 'subuser';
+    public const PARAM_KEY_TYPE   = 'key-type';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

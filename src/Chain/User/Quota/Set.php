@@ -16,12 +16,12 @@ use MyENA\RGW\Validators;
  */
 class Set extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'PUT';
+    public const METHOD = 'PUT';
 
-    const PARAM_QUOTA_TYPE  = 'quota-type';
-    const PARAM_MAX_OBJECTS = 'max-objects';
-    const PARAM_MAX_SIZE_KB = 'max-size-kb';
-    const PARAM_ENABLED     = 'enabled';
+    public const PARAM_QUOTA_TYPE  = 'quota-type';
+    public const PARAM_MAX_OBJECTS = 'max-objects';
+    public const PARAM_MAX_SIZE_KB = 'max-size-kb';
+    public const PARAM_ENABLED     = 'enabled';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

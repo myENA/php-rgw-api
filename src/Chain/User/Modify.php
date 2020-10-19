@@ -18,18 +18,18 @@ use MyENA\RGW\Validators;
  */
 class Modify extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'POST';
+    public const METHOD = 'POST';
 
-    const PARAM_UID               = 'uid';
-    const PARAM_DISPLAY_NAME      = 'display-name';
-    const PARAM_EMAIL             = 'email';
-    const PARAM_KEY_TYPE          = 'key-type';
-    const PARAM_ACCESS_KEY        = 'access-key';
-    const PARAM_SECRET_KEY        = 'secret-key';
-    const PARAM_USER_CAPABILITIES = 'user-caps';
-    const PARAM_GENERATE_KEY      = 'generate-key';
-    const PARAM_MAX_BUCKETS       = 'max-buckets';
-    const PARAM_SUSPENDED         = 'suspended';
+    public const PARAM_UID               = 'uid';
+    public const PARAM_DISPLAY_NAME      = 'display-name';
+    public const PARAM_EMAIL             = 'email';
+    public const PARAM_KEY_TYPE          = 'key-type';
+    public const PARAM_ACCESS_KEY        = 'access-key';
+    public const PARAM_SECRET_KEY        = 'secret-key';
+    public const PARAM_USER_CAPABILITIES = 'user-caps';
+    public const PARAM_GENERATE_KEY      = 'generate-key';
+    public const PARAM_MAX_BUCKETS       = 'max-buckets';
+    public const PARAM_SUSPENDED         = 'suspended';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

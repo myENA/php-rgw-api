@@ -16,11 +16,11 @@ use MyENA\RGW\Validators;
  */
 class Index extends AbstractLink implements MethodLink, ParameterLink, ExecutableLink
 {
-    const METHOD = 'GET';
+    public const METHOD = 'GET';
 
-    const PARAM_BUCKET        = 'bucket';
-    const PARAM_CHECK_OBJECTS = 'check-objects';
-    const PARAM_FIX           = 'fix';
+    public const PARAM_BUCKET        = 'bucket';
+    public const PARAM_CHECK_OBJECTS = 'check-objects';
+    public const PARAM_FIX           = 'fix';
 
     /** @var \MyENA\RGW\Parameter[] */
     private $parameters;

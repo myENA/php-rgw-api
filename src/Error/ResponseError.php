@@ -8,7 +8,6 @@ namespace MyENA\RGW\Error;
  */
 class ResponseError extends AbstractError
 {
-
     /** @var string */
     protected $contents;
 

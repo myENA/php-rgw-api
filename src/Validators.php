@@ -5,6 +5,7 @@ namespace MyENA\RGW;
 use MyENA\RGW\Validator\BooleanValidator;
 use MyENA\RGW\Validator\BucketNameValidator;
 use MyENA\RGW\Validator\CustomValidator;
+use MyENA\RGW\Validator\DateTimeValidator;
 use MyENA\RGW\Validator\EmailValidator;
 use MyENA\RGW\Validator\InstanceOfValidator;
 use MyENA\RGW\Validator\IntegerValidator;
@@ -41,6 +42,9 @@ abstract class Validators
     private static $userCapability;
     /** @var \MyENA\RGW\Validator\BucketNameValidator */
     private static $bucketName;
+
+    /** @var \MyENA\RGW\Validator\DateTimeValidator */
+    private static $datetime;
 
     /**
      * @return \MyENA\RGW\Validator\RequiredValidator
@@ -155,6 +159,17 @@ abstract class Validators
             self::$bucketName = new BucketNameValidator();
         }
         return self::$bucketName;
+    }
+
+    /**
+     * @return \MyENA\RGW\Validator\DateTimeValidator
+     */
+    public static function DateTime(): DateTimeValidator
+    {
+        if (!isset(self::$datetime)) {
+            self::$datetime = new DateTimeValidator();
+        }
+        return self::$datetime;
     }
 
     /**
