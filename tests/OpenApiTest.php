@@ -14,6 +14,9 @@ use function OpenApi\scan as openapi_scan;
  */
 class OpenApiTest extends TestCase
 {
+    /**
+     * @throws \ErrorException
+     */
     public function testAnnotation()
     {
         set_error_handler(function ($severity, $message, $file, $line) {
@@ -24,6 +27,7 @@ class OpenApiTest extends TestCase
         $analysis->addAnalysis($analyser->fromCode(/** @lang PHP */
             <<<PHP
 <?php
+use OpenApi\Annotations as OA;
 /**
  * @OA\Info(
  *      version="1.0.0",
@@ -47,8 +51,8 @@ PHP
         ));
         $openapi = openapi_scan(__DIR__ . '/../src', ['analysis' => $analysis, 'analyser' => $analyser]);
 
-        $this->assertTrue(array_key_exists("\MyENA\RGW\AbstractParameter",$openapi->_analysis->classes));
-        $this->assertTrue(array_key_exists("\MyENA\RGW\Chain\Bucket\Link",$openapi->_analysis->classes));
-        $this->assertTrue(array_key_exists("\MyENA\RGW\Validator\BucketNameValidator",$openapi->_analysis->classes));
+        $this->assertTrue(array_key_exists("\MyENA\RGW\AbstractParameter", $openapi->_analysis->classes));
+        $this->assertTrue(array_key_exists("\MyENA\RGW\Chain\Bucket\Link", $openapi->_analysis->classes));
+        $this->assertTrue(array_key_exists("\MyENA\RGW\Validator\BucketNameValidator", $openapi->_analysis->classes));
     }
 }

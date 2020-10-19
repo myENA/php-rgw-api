@@ -10,8 +10,8 @@ use MyENA\RGW\Validator;
  */
 class EmailValidator implements Validator
 {
-    const NAME    = 'email';
-    const EXPECTS = 'string conforming to PHP email filter spec';
+    public const NAME    = 'email';
+    public const EXPECTS = 'string conforming to PHP email filter spec';
 
     /**
      * @return string

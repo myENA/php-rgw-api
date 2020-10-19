@@ -24,7 +24,7 @@ class UserRootLinkTest extends TestCase
     /**
      * Constructs a new client to use for this test class
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$client = Client::defaultClient();
     }

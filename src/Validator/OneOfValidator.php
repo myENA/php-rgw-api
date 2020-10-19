@@ -10,7 +10,7 @@ use MyENA\RGW\Validator;
  */
 class OneOfValidator implements Validator
 {
-    const NAME = 'one-of';
+    public const NAME = 'one-of';
 
     /** @var array */
     private $allowed = [];

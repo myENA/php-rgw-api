@@ -10,7 +10,7 @@ use MyENA\RGW\Validator;
  */
 class CustomValidator implements Validator
 {
-    const NAME = 'custom';
+    public const NAME = 'custom';
 
     /** @var string */
     private $name;

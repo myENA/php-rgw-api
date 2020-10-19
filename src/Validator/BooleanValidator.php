@@ -10,8 +10,8 @@ use MyENA\RGW\Validator;
  */
 class BooleanValidator implements Validator
 {
-    const NAME = 'boolean';
-    const EXPECTS = 'boolean (true|false)';
+    public const NAME    = 'boolean';
+    public const EXPECTS = 'boolean (true|false)';
 
     /**
      * @return string

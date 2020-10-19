@@ -14,7 +14,7 @@ use MyENA\RGW\Tests\Chain\AbstractLinkTestCase;
 class UserCRUDTest extends AbstractLinkTestCase
 {
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         // try to delete all users that may have been created here.
         self::$client->User()->Delete(RGW_TEST_USER_UID, true)->execute();

@@ -10,8 +10,8 @@ use MyENA\RGW\Validator;
  */
 class StringValidator implements Validator
 {
-    const NAME    = 'string';
-    const EXPECTS = 'value to be a string';
+    public const NAME    = 'string';
+    public const EXPECTS = 'value to be a string';
 
     /**
      * @return string

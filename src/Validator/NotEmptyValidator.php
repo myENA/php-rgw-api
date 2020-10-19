@@ -12,8 +12,8 @@ use MyENA\RGW\Validator;
  */
 class NotEmptyValidator implements Validator
 {
-    const NAME    = 'not-empty';
-    const EXPECTS = 'type-specific non-empty value';
+    public const NAME    = 'not-empty';
+    public const EXPECTS = 'type-specific non-empty value';
 
     /**
      * @return string

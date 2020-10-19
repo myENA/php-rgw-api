@@ -10,10 +10,10 @@ use MyENA\RGW\Validator;
  */
 class BucketNameValidator implements Validator
 {
-    const NAME = 'bucket-name';
+    public const NAME = 'bucket-name';
 
     // TODO: improve to test for ip addresses.
-    const TEST_REGEX = '/^([a-zA-Z0-9_]+\/)?[a-z0-9][a-z0-9-\.]{2,62}$/';
+    public const TEST_REGEX = '/^([a-zA-Z0-9_]+\/)?[a-z0-9][a-z0-9-\.]{2,62}$/';
 
     /**
      * @return string

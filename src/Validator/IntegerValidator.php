@@ -12,8 +12,8 @@ use MyENA\RGW\Validator;
  */
 class IntegerValidator implements Validator
 {
-    const NAME    = 'integer';
-    const EXPECTS = 'integer or string containing only numbers with optional sign prefix';
+    public const NAME    = 'integer';
+    public const EXPECTS = 'integer or string containing only numbers with optional sign prefix';
 
     /**
      * @return string

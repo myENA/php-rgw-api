@@ -26,30 +26,21 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter uid failed not-empty validator with value: "")/
-     */
     public function testExceptionThrownWhenUIDEmpty(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         self::$client->User()->Create('', RGW_TEST_USER_DISPLAY_NAME);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter display-name failed not-empty validator with value: "")/
-     */
     public function testExceptionThrownWhenDisplayNameEmpty(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         self::$client->User()->Create(RGW_TEST_USER_UID, '');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter tenant failed tenant validator with value: "cheeze1241354&~\(\!\*~\(@")/
-     */
     public function testExceptionThrownWhenTenantInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_TENANT => 'cheeze1241354&~(!*~(@']);
     }
 
@@ -60,12 +51,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter email failed email validator with value: "whatever!\$#!")/
-     */
     public function testExceptionThrownWhenEmailInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_EMAIL => 'whatever!$#!']);
     }
 
@@ -75,12 +63,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter key-type failed one-of validator with value: "whatever")/
-     */
     public function testExceptionThrownWhenKeyTypeInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_KEY_TYPE => 'whatever']);
     }
 
@@ -90,12 +75,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter access-key failed string validator with value: 1234)/
-     */
     public function testExceptionThrownWhenAccessKeyInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_ACCESS_KEY => 1234]);
     }
 
@@ -105,12 +87,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter secret-key failed string validator with value: 1234)/
-     */
     public function testExceptionThrownWhenSecretKeyInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_SECRET_KEY => 1234]);
     }
 
@@ -120,12 +99,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter generate-key failed boolean validator with value: "whatever")/
-     */
     public function testExceptionThrownWhenGenerateKeyInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_GENERATE_KEY => 'whatever']);
     }
 
@@ -135,12 +111,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter max-buckets failed integer validator with value: "seven")/
-     */
     public function testExceptionThrownWhenMaxBucketsInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_MAX_BUCKETS => 'seven']);
     }
 
@@ -150,12 +123,9 @@ class CreateParameterTest extends AbstractLinkTestCase
         $this->assertInstanceOf(Create::class, $create);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessageRegExp /^(Parameter suspended failed boolean validator with value: "whatever")/
-     */
     public function testExceptionThrownWhenSuspendedInvalid(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
         $this->getValidCreate([Create::PARAM_SUSPENDED => 'whatever']);
     }
 

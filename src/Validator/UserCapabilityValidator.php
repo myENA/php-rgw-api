@@ -11,7 +11,7 @@ use MyENA\RGW\Validator;
  */
 class UserCapabilityValidator implements Validator
 {
-    const NAME = 'user-capability';
+    public const NAME = 'user-capability';
 
     /**
      * @return string

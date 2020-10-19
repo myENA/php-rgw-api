@@ -19,7 +19,7 @@ abstract class AbstractLinkTestCase extends TestCase
     /** @var \MyENA\RGW\Client */
     protected static $client;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         self::$client = new Client(
             Config::defaultConfig(new HttpClient([RequestOptions::VERIFY => false]), new DefaultANSILogger()),

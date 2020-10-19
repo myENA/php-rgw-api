@@ -10,8 +10,8 @@ use MyENA\RGW\Validator;
  */
 class TenantNameValidator implements Validator
 {
-    const NAME       = 'tenant';
-    const TEST_REGEX = '{^[a-zA-Z0-9_]+$}';
+    public const NAME       = 'tenant';
+    public const TEST_REGEX = '{^[a-zA-Z0-9_]+$}';
 
     /**
      * @return string

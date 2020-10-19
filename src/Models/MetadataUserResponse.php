@@ -2,6 +2,8 @@
 
 namespace MyENA\RGW\Models;
 
+use OpenApi\Annotations as OA;
+
 /**
  * @OA\Schema(
  *     schema="RGWMetadataUserResponse",

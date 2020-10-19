@@ -3,6 +3,7 @@
 namespace MyENA\RGW\Models;
 
 use MyENA\RGW\AbstractModel;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -26,19 +27,19 @@ use MyENA\RGW\AbstractModel;
 class UserCapability extends AbstractModel
 {
 
-    const KEY_TYPE = 'type';
-    const KEY_PERM = 'perm';
+    public const KEY_TYPE = 'type';
+    public const KEY_PERM = 'perm';
 
-    const TYPE_USERS    = 'users';
-    const TYPE_BUCKETS  = 'buckets';
-    const TYPE_METADATA = 'metadata';
-    const TYPE_USAGE    = 'usage';
-    const TYPE_ZONE     = 'zone';
+    public const TYPE_USERS    = 'users';
+    public const TYPE_BUCKETS  = 'buckets';
+    public const TYPE_METADATA = 'metadata';
+    public const TYPE_USAGE    = 'usage';
+    public const TYPE_ZONE     = 'zone';
 
-    const PERM_ALL        = '*';
-    const PERM_READ       = 'read';
-    const PERM_WRITE      = 'write';
-    const PERM_READ_WRITE = 'read,write';
+    public const PERM_ALL        = '*';
+    public const PERM_READ       = 'read';
+    public const PERM_WRITE      = 'write';
+    public const PERM_READ_WRITE = 'read,write';
 
     /** @var string */
     protected $type;

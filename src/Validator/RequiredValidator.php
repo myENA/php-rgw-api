@@ -10,8 +10,8 @@ use MyENA\RGW\Validator;
  */
 class RequiredValidator implements Validator
 {
-    const NAME    = 'required';
-    const EXPECTS = 'value to be defined';
+    public const NAME    = 'required';
+    public const EXPECTS = 'value to be defined';
 
     /**
      * @return string

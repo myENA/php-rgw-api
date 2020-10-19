@@ -12,7 +12,6 @@ use function MyENA\RGW\encodeValue;
  */
 class SingleParameter extends AbstractParameter
 {
-
     /** @var mixed */
     protected $value;
 
